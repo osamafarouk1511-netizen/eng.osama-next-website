@@ -77,12 +77,7 @@ export default function TestimonialsSection() {
     <section className="py-12 md:py-24 bg-black relative overflow-hidden" ref={containerRef}>
       {/* Background Effects */}
       <div className="absolute inset-0 bg-gradient-to-b from-primary/5 via-transparent to-transparent opacity-40" />
-      <motion.div
-        className="absolute inset-0"
-        style={{ y }}
-      />
-
-      <div className="container mx-auto px-4 relative">
+      <motion.div className="absolute inset-0" style={{ y }} />
       <div className="container mx-auto px-4 relative z-10">
         <motion.h2
           initial={{ opacity: 0, y: 30 }}
@@ -96,28 +91,21 @@ export default function TestimonialsSection() {
         <p className="text-center text-gray-400 mb-12 max-w-2xl mx-auto">
           تعرف على آراء شركائنا حول رحلة التحول الرقمي مع CSS
         </p>
-        </motion.div>
-
         <div className="relative max-w-4xl mx-auto">
           {/* Navigation Buttons - Hidden on mobile, visible on larger screens */}
           <div className="hidden md:block">
             <button
               onClick={prevTestimonial}
-              className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-12 lg:-translate-x-24 
-                       p-3 rounded-full bg-white/5 hover:bg-white/10 border border-white/10 
-                       transition-colors z-10"
+              className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-12 lg:-translate-x-24 p-3 rounded-full bg-white/5 hover:bg-white/10 border border-white/10 transition-colors z-10"
               aria-label="Previous testimonial"
               title="Previous testimonial"
             >
               <span className="sr-only">Previous testimonial</span>
               <ChevronLeft className="w-6 h-6 text-gray-400" />
             </button>
-
             <button
               onClick={nextTestimonial}
-              className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-12 lg:translate-x-24 
-                       p-3 rounded-full bg-white/5 hover:bg-white/10 border border-white/10 
-                       transition-colors z-10"
+              className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-12 lg:translate-x-24 p-3 rounded-full bg-white/5 hover:bg-white/10 border border-white/10 transition-colors z-10"
               aria-label="Next testimonial"
               title="Next testimonial"
             >
@@ -125,24 +113,20 @@ export default function TestimonialsSection() {
               <ChevronRight className="w-6 h-6 text-gray-400" />
             </button>
           </div>
-
           {/* Mobile Navigation Buttons */}
           <div className="flex md:hidden justify-between mb-4">
             <button
               onClick={prevTestimonial}
-              className="p-3 rounded-full bg-white/5 hover:bg-white/10 border border-white/10 
-                       transition-colors z-10"
+              className="p-3 rounded-full bg-white/5 hover:bg-white/10 border border-white/10 transition-colors z-10"
               aria-label="Previous testimonial"
               title="Previous testimonial"
             >
               <span className="sr-only">Previous testimonial</span>
               <ChevronLeft className="w-6 h-6 text-gray-400" />
             </button>
-
             <button
               onClick={nextTestimonial}
-              className="p-3 rounded-full bg-white/5 hover:bg-white/10 border border-white/10 
-                       transition-colors z-10"
+              className="p-3 rounded-full bg-white/5 hover:bg-white/10 border border-white/10 transition-colors z-10"
               aria-label="Next testimonial"
               title="Next testimonial"
             >
@@ -150,13 +134,9 @@ export default function TestimonialsSection() {
               <ChevronRight className="w-6 h-6 text-gray-400" />
             </button>
           </div>
-
           {/* Testimonials Carousel */}
           <div className="relative overflow-hidden">
-            <div 
-              className="transition-all duration-500 ease-out flex"
-              style={{ transform: `translateX(-${activeIndex * 100}%)` }}
-            >
+            <div className="transition-all duration-500 ease-out flex" style={{ transform: `translateX(-${activeIndex * 100}%)` }}>
               {testimonials.map((testimonial, index) => (
                 <motion.div
                   key={testimonial.id}
@@ -168,10 +148,10 @@ export default function TestimonialsSection() {
                   <div className="bg-white/5 sm:backdrop-blur-sm p-6 md:p-8 rounded-2xl border border-white/10">
                     <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-6 mb-6">
                       <div className="flex items-center space-x-4">
-                            <div className="w-14 h-14 md:w-16 md:h-16 rounded-lg bg-white/10 flex items-center justify-center shrink-0">
-                              {/* Render initials avatar (consistent style, no broken-image icon) */}
-                              <Avatar name={testimonial.name} />
-                            </div>
+                        <div className="w-14 h-14 md:w-16 md:h-16 rounded-lg bg-white/10 flex items-center justify-center shrink-0">
+                          {/* Render initials avatar (consistent style, no broken-image icon) */}
+                          <Avatar name={testimonial.name} />
+                        </div>
                         <div>
                           <h3 className="text-lg md:text-xl font-semibold bg-gradient-to-r from-white to-gray-400 bg-clip-text text-transparent">{testimonial.name}</h3>
                           <p className="text-sm md:text-base text-gray-300">{testimonial.role}</p>
@@ -179,10 +159,7 @@ export default function TestimonialsSection() {
                       </div>
                       <div className="flex space-x-1">
                         {[...Array(testimonial.rating)].map((_, i) => (
-                          <Star
-                            key={i}
-                            className="w-4 h-4 md:w-5 md:h-5 text-primary fill-primary"
-                          />
+                          <Star key={i} className="w-4 h-4 md:w-5 md:h-5 text-primary fill-primary" />
                         ))}
                       </div>
                     </div>
@@ -200,37 +177,7 @@ export default function TestimonialsSection() {
               <button
                 key={index}
                 onClick={() => setActiveIndex(index)}
-                className={`w-2 h-2 rounded-full transition-colors ${
-                  index === activeIndex ? 'bg-primary' : 'bg-white/20'
-                }`}
-                aria-label={`Go to testimonial ${index + 1}`}
-                title={`Go to testimonial ${index + 1}`}
-              >
-                <span className="sr-only">Go to testimonial {index + 1}</span>
-              </button>
-            ))}
-          </div>
-        </div>
-      </div>
-    </section>
-  );
-}
-                    </blockquote>
-                  </div>
-                </motion.div>
-              ))}
-            </div>
-          </div>
-
-          {/* Dots Navigation */}
-          <div className="flex justify-center space-x-2 mt-8">
-            {testimonials.map((_, index) => (
-              <button
-                key={index}
-                onClick={() => setActiveIndex(index)}
-                className={`w-2 h-2 rounded-full transition-colors ${
-                  index === activeIndex ? 'bg-primary' : 'bg-white/20'
-                }`}
+                className={`w-2 h-2 rounded-full transition-colors ${index === activeIndex ? 'bg-primary' : 'bg-white/20'}`}
                 aria-label={`Go to testimonial ${index + 1}`}
                 title={`Go to testimonial ${index + 1}`}
               >
