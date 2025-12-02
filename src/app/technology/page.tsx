@@ -3,8 +3,7 @@
 import React, { useEffect, useState, useRef } from 'react';
 import { motion } from 'framer-motion';
 import { Database, Cloud, Code2, Cpu, Brain, Lock } from 'lucide-react';
-import { Button } from '@/components/ui/button';
-import { SpeedInsights } from "@vercel/speed-insights/next"
+// Removed unused imports
 
 const technologies = [
   {

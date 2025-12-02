@@ -2,7 +2,7 @@
 
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { useRef, useEffect, useState } from 'react';
-import { Trophy, Users, Star, Code, Globe } from 'lucide-react';
+import { Trophy, Star, Code, Globe } from 'lucide-react';
 
 const achievements = [
   {
