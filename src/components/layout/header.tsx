@@ -24,8 +24,8 @@ const Header = () => {
   }
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 bg-white/80 sm:backdrop-blur-md">
-      <nav className="container mx-auto px-4 py-4">
+    <header className="fixed top-0 left-0 right-0 z-50 bg-white/80 sm:backdrop-blur-md w-full overflow-x-hidden">
+      <nav className="container mx-auto px-4 py-4 w-full">
         <div className="flex items-center justify-between">
           <Link href="/" className="text-2xl font-bold text-primary flex items-center gap-2">
             {/* Use Next.js Image for better performance */}
