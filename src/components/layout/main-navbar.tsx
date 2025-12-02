@@ -69,11 +69,9 @@ export default function MainNavbar() {
               <Image
                 src="/b5e28d61-f2d1-469f-884d-f623c1498887-removebg-preview.png"
                 alt="CSS Logo"
-                src="/b5e28d61-f2d1-469f-884d-f623c1498887-removebg-preview.png"
                 className="object-contain w-[180px] h-[60px] md:w-[260px] md:h-[90px]"
                 width={280}
                 height={100}
-                className="object-contain w-[180px] h-[60px] md:w-[260px] md:h-[90px]"
               />
             </Link>
           </motion.div>

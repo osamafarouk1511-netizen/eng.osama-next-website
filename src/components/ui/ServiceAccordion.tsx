@@ -5,11 +5,13 @@ import { motion } from 'framer-motion';
 import { ArrowDown, ArrowUp } from 'lucide-react';
 import { Button } from './button';
 
+import type { ComponentType } from 'react';
+
 interface Props {
   title: string;
   description?: string;
   items: string[];
-  icon?: any;
+  icon?: ComponentType<{ className?: string }>;
   ctaLabel?: string;
   ctaHref?: string;
 }

@@ -3,7 +3,7 @@
 import { motion } from 'framer-motion';
 import { useRouter } from 'next/navigation';
 import Image from 'next/image';
-import { Code2, Cloud, Laptop, Brush, ChartBar, Shield, Server, Lightbulb, ArrowRight, ChevronLeft, ChevronRight, Database, ShoppingCart, Globe } from 'lucide-react';
+import { Cloud, Server, Database, Globe, ArrowRight, ChevronLeft, ChevronRight } from 'lucide-react';
 import ServiceAccordion from '@/components/ui/ServiceAccordion';
 import { useState } from 'react';
 import { Button } from '@/components/ui/button';
