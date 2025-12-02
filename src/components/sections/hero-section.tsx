@@ -21,9 +21,9 @@ export default function HeroSection() {
   const isDesktop = useMediaQuery('(min-width: 768px)');
 
   return (
-    <section className="relative min-h-[100svh] flex items-center justify-center bg-black pt-16 pb-8 md:py-0">
-      <div className="container mx-auto px-4 sm:px-6">
-        <div className="grid md:grid-cols-2 gap-6 md:gap-12 items-center">
+    <section className="relative min-h-[100svh] flex items-center justify-center bg-black pt-16 pb-8 md:py-0 w-full overflow-x-hidden">
+      <div className="container mx-auto px-4 sm:px-6 w-full max-w-full">
+        <div className="grid md:grid-cols-2 gap-6 md:gap-12 items-center w-full max-w-full">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}

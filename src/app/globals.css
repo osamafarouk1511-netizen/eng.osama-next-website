@@ -43,6 +43,7 @@ html, body, #__next {
   -moz-osx-font-smoothing: grayscale;
   -webkit-backface-visibility: hidden;
   backface-visibility: hidden;
+  overflow-x: hidden;
 }
 
 /* Apply GPU-accelerated transforms and hint the browser */
