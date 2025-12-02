@@ -1,0 +1,173 @@
+@import "tailwindcss";
+@import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800&display=swap');
+
+:root {
+  --background: #ffffff;
+  --foreground: #171717;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0a0a0a;
+    --foreground: #ededed;
+  }
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: 'Cairo', Arial, Helvetica, sans-serif;
+}
+
+/* Expose font variables for components that reference them */
+:root {
+  --font-sans: 'Cairo', system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+  --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, "Roboto Mono", "Courier New", monospace;
+}
+
+/* Animation & rendering optimizations for smoother motion */
+:root {
+  --motion-duration: 0.45s;
+  --motion-ease: cubic-bezier(.22,.8,.29,.99);
+}
+
+html, body, #__next {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+}
+
+/* Apply GPU-accelerated transforms and hint the browser */
+.motion-safe * {
+  will-change: transform, opacity;
+  transform: translateZ(0);
+  backface-visibility: hidden;
+}
+
+/* Smooth transitions default for interactive elements */
+a, button, .btn, .card, .glass-card {
+  transition: transform var(--motion-duration) var(--motion-ease),
+              opacity var(--motion-duration) var(--motion-ease),
+              box-shadow var(--motion-duration) var(--motion-ease);
+}
+
+/* Reduce potential layout thrashing for motion elements */
+.motion-tile {
+  will-change: transform, opacity;
+  will-change: filter;
+  -webkit-transform: translateZ(0);
+}
+
+/* Respect users who prefer reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    transition-duration: 0s !important;
+    animation-duration: 0s !important;
+    animation-iteration-count: 1 !important;
+  }
+}
+
+/* Force all h2 headings to pure white for consistency */
+h2 {
+  color: #ffffff !important;
+}
+
+/* Scoped legibility helpers
+   - Avoid forcing gray utility classes globally. Instead provide scoped helpers
+     for dark or light card surfaces so text remains readable on both.
+*/
+/* Use on dark card containers to make muted utility text visible */
+.card-dark .text-gray-400,
+.card-dark .text-gray-300,
+.card-dark .text-gray-500,
+.card-dark .text-gray-600,
+.card-dark section p,
+.card-dark .lead,
+.card-dark .hero-lead,
+.card-dark .text-muted {
+  color: rgba(255,255,255,0.95) !important;
+  font-weight: 500 !important;
+  line-height: 1.6 !important;
+}
+
+/* For light-surface cards we ensure muted utilities remain dark */
+.card-light .text-gray-400,
+.card-light .text-gray-300,
+.card-light .text-gray-500,
+.card-light .text-gray-600,
+.card-light section p,
+.card-light .lead,
+.card-light .hero-lead,
+.card-light .text-muted {
+  color: rgba(10,10,10,0.92) !important;
+  font-weight: 500 !important;
+  line-height: 1.6 !important;
+}
+
+/* Make small link arrows and chevrons more visible when paired with text (scoped) */
+.container a span,
+.container a .arrow,
+.container .sr-only ~ span {
+  color: rgba(255,255,255,0.96) !important;
+}
+
+/* Ensure h3 headings on dark card surfaces render white */
+.card-dark h3 {
+  color: #ffffff !important;
+}
+
+/* Header / Navbar / Footer selectors: target common classnames used in the project
+   Use a broad set of selectors to ensure consistent white text across layouts.
+*/
+header,
+nav,
+.main-navbar,
+.header,
+.navbar,
+footer,
+.site-footer,
+.super-footer,
+.footer {
+  color: #ffffff !important;
+}
+
+header a,
+nav a,
+.main-navbar a,
+.header a,
+.navbar a,
+footer a,
+.site-footer a,
+.super-footer a,
+.footer a {
+  color: #ffffff !important;
+}
+
+/* Make muted/secondary footer and navbar text more visible */
+footer .text-gray-400,
+.super-footer .text-gray-400,
+nav .text-gray-400,
+.main-navbar .text-gray-400,
+.footer .text-gray-400 {
+  color: rgba(255,255,255,0.9) !important;
+  font-weight: 600 !important;
+  line-height: 1.45 !important;
+}
+
+/* Ensure icon colors in nav/footer also appear white */
+nav svg,
+footer svg,
+.main-navbar svg,
+.super-footer svg {
+  color: #ffffff !important;
+  fill: #ffffff !important;
+}
+
