@@ -6,7 +6,6 @@ import { Trophy, Users, Star, Code, Globe } from 'lucide-react';
 
 const achievements = [
   {
-    year: 2024,
     title: "تأسيس الشركة",
     description: "بدأت برؤية لتحويل الحلول الرقمية",
     icon: Trophy,
@@ -20,14 +19,12 @@ const achievements = [
     metric: { value: 15, label: "المشاريع المُسلمة" }
   },
   {
-    year: 2025,
     title: "التوسع العالمي",
     description: "افتتحنا مكاتب في ثلاث دول جديدة",
     icon: Globe,
     metric: { value: 7, label: "أعضاء الفريق" }
   },
   {
-    year: 2025,
     title: "ابتكار تكنولوجي",
     description: "أطلقنا منصتنا السحابية الخاصة",
     icon: Code,

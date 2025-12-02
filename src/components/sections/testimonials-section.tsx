@@ -194,6 +194,33 @@ export default function TestimonialsSection() {
               ))}
             </div>
           </div>
+          {/* Dots Navigation */}
+          <div className="flex justify-center space-x-2 mt-8">
+            {testimonials.map((_, index) => (
+              <button
+                key={index}
+                onClick={() => setActiveIndex(index)}
+                className={`w-2 h-2 rounded-full transition-colors ${
+                  index === activeIndex ? 'bg-primary' : 'bg-white/20'
+                }`}
+                aria-label={`Go to testimonial ${index + 1}`}
+                title={`Go to testimonial ${index + 1}`}
+              >
+                <span className="sr-only">Go to testimonial {index + 1}</span>
+              </button>
+            ))}
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+                    </blockquote>
+                  </div>
+                </motion.div>
+              ))}
+            </div>
+          </div>
 
           {/* Dots Navigation */}
           <div className="flex justify-center space-x-2 mt-8">

@@ -1,7 +1,7 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { Database, Server, Globe, ShoppingCart, Code2, Cog, Cloud, Shield } from 'lucide-react';
+import { Database, Server, Globe, ShoppingCart, Code2, Cloud, Shield } from 'lucide-react';
 import { AnimatedServiceCard } from '../ui/animated-service-card';
 import CurvedBackground from '../ui/curved-background';
 
