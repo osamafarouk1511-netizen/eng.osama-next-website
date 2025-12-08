@@ -76,7 +76,7 @@ export default function ServicesSection() {
           </p>
         </motion.div>
 
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
           {services.map((service, index) => (
             <AnimatedServiceCard
               key={service.title}
@@ -84,6 +84,91 @@ export default function ServicesSection() {
               index={index}
             />
           ))}
+        </div>
+
+        {/* YouTube Videos Section */}
+        <div className="mt-24">
+          <h2 className="text-3xl font-bold mb-8 text-center text-[var(--color-navy)]">فيديوهات القناة</h2>
+          <div className="grid grid-cols-3 gap-8">
+            {/* Top row */}
+            <div className="rounded-xl shadow-lg bg-[var(--color-sky)] p-4 flex flex-col items-center border-2 border-[var(--color-blue)] col-span-1" dir="rtl">
+              <iframe
+                width="100%"
+                height="250"
+                src="https://www.youtube.com/embed/Iwe52JYeKLA"
+                title="تكامل الفاتورة الإلكترونية"
+                frameBorder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowFullScreen
+                className="rounded-lg mb-4 border border-[var(--color-blue)]"
+              ></iframe>
+              <div className="font-bold text-xl text-center text-white" style={{color: '#fff'}}>
+                تكامل الفاتورة الإلكترونية
+              </div>
+            </div>
+            <div className="rounded-xl shadow-lg bg-[var(--color-sky)] p-4 flex flex-col items-center border-2 border-[var(--color-blue)] col-span-1" dir="rtl">
+              <iframe
+                width="100%"
+                height="250"
+                src="https://www.youtube.com/embed/FCUwz7J6--4"
+                title="مميزات وفوائد نقاط البيع الذكية"
+                frameBorder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowFullScreen
+                className="rounded-lg mb-4 border border-[var(--color-blue)]"
+              ></iframe>
+              <div className="font-bold text-xl text-center text-white" style={{color: '#fff'}}>
+                مميزات وفوائد نقاط البيع الذكية
+              </div>
+            </div>
+            <div className="rounded-xl shadow-lg bg-[var(--color-sky)] p-4 flex flex-col items-center border-2 border-[var(--color-blue)] col-span-1" dir="rtl">
+              <iframe
+                width="100%"
+                height="250"
+                src="https://www.youtube.com/embed/ByeiS0VgOIE"
+                title="نظرة عامة على نظام CSS ERP"
+                frameBorder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowFullScreen
+                className="rounded-lg mb-4 border border-[var(--color-blue)]"
+              ></iframe>
+              <div className="font-bold text-xl text-center text-white" style={{color: '#fff'}}>
+                نظرة عامة على نظام CSS ERP
+              </div>
+            </div>
+            {/* Bottom row */}
+            <div className="rounded-xl shadow-lg bg-[var(--color-sky)] p-4 flex flex-col items-center border-2 border-[var(--color-blue)] col-span-1" dir="rtl">
+              <iframe
+                width="100%"
+                height="250"
+                src="https://www.youtube.com/embed/AP92ZUfmBbo"
+                title="الأمن السيبراني وإدارة المخاطر"
+                frameBorder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowFullScreen
+                className="rounded-lg mb-4 border border-[var(--color-blue)]"
+              ></iframe>
+              <div className="font-bold text-xl text-center text-white" style={{color: '#fff'}}>
+                الأمن السيبراني وإدارة المخاطر
+              </div>
+            </div>
+            <div className="rounded-xl shadow-lg bg-[var(--color-sky)] p-4 flex flex-col items-center border-2 border-[var(--color-blue)] col-span-1" dir="rtl">
+              <iframe
+                width="100%"
+                height="250"
+                src="https://www.youtube.com/embed/roEbzfPBRk0"
+                title="حلول سحابية للأعمال"
+                frameBorder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowFullScreen
+                className="rounded-lg mb-4 border border-[var(--color-blue)]"
+              ></iframe>
+              <div className="font-bold text-xl text-center text-white" style={{color: '#fff'}}>
+                حلول سحابية للأعمال
+              </div>
+            </div>
+            <div className="col-span-1"></div>
+          </div>
         </div>
       </div>
     </section>
