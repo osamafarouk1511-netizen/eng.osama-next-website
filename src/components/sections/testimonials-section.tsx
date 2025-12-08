@@ -39,7 +39,7 @@ const testimonials = [
 ];
 
 export default function TestimonialsSection() {
-  // Helper to compute initials from a full name
+  // Helper to compute initerdftgyhuuuuuuuuuuuuuuuuuuials from a full name
   const getInitials = (name: string) => {
     if (!name) return '';
     const parts = name.split(' ').filter(Boolean);
