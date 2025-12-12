@@ -13,7 +13,7 @@ import { useLanguage } from '@/lib/LanguageProvider';
 
 // JSON-LD will be generated inside the component to use localized strings
 
-function ProjectCard({ project, index }: { project: typeof projects[0]; index: number }) {
+function ProjectCard({index }: {  index: number }) {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const { t } = useLanguage();
 
