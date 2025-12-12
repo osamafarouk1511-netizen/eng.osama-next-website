@@ -5,7 +5,7 @@ import { motion } from 'framer-motion';
 
 export function WhatsAppButton() {
   // WhatsApp number for CSS (replace with actual number)
-  const whatsappNumber = '+201113146750';
+  const whatsappNumber = '+20 100 006 0141';
   const whatsappLink = `https://wa.me/${whatsappNumber.replace(/[^0-9]/g, '')}?text=مرحبا، أود الاستفسار عن خدماتكم`;
 
   return (

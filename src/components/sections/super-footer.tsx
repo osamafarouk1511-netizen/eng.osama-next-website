@@ -171,7 +171,7 @@ export default function SuperFooter() {
               className="flex items-center text-gray-300"
             >
               <Phone className="mr-3" size={20} />
-              <a href="tel:+11234567890">+20 1113146750</a>
+              <a href="tel:+11234567890">+20 +20 100 006 0141</a>
             </motion.div>
             <motion.div
               whileHover={{ scale: 1.05 }}
