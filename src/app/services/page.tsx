@@ -9,11 +9,19 @@ import { useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { useLanguage } from '@/lib/LanguageProvider';
 
-// services and projects are localized inside the component using `t()`
+type Project = {
+  id: number;
+  title: string;
+  category: string;
+  images: string[];
+};
 
-// JSON-LD will be generated inside the component to use localized strings
+type ProjectCardProps = {
+  project: Project;
+  index: number;
+};
 
-function ProjectCard({index }: {  index: number }) {
+function ProjectCard({ project, index }: ProjectCardProps) {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const { t } = useLanguage();
 
@@ -39,7 +47,7 @@ function ProjectCard({index }: {  index: number }) {
           initial={{ opacity: 0, x: 100 }}
           animate={{ opacity: 1, x: 0 }}
           exit={{ opacity: 0, x: -100 }}
-          transition={{ duration: 0.5, ease: "easeInOut" }}
+          transition={{ duration: 0.5, ease: 'easeInOut' }}
           className="absolute inset-0"
         >
           <Image
@@ -50,8 +58,7 @@ function ProjectCard({index }: {  index: number }) {
             priority={false}
           />
         </motion.div>
-        
-        {/* Navigation Buttons */}
+
         {project.images.length > 1 && (
           <>
             <motion.button
@@ -75,7 +82,6 @@ function ProjectCard({index }: {  index: number }) {
           </>
         )}
 
-        {/* Image Counter */}
         {project.images.length > 1 && (
           <motion.div
             key={`counter-${currentImageIndex}`}
@@ -89,7 +95,6 @@ function ProjectCard({index }: {  index: number }) {
         )}
       </div>
 
-      {/* Project Info */}
       <div className="p-4 sm:p-6">
         <p className="text-primary text-sm font-semibold mb-2">{project.category}</p>
         <h3 className="text-lg sm:text-xl font-semibold text-white">{project.title}</h3>
@@ -102,7 +107,7 @@ export default function ServicesPage() {
   const router = useRouter();
   const { t } = useLanguage();
 
-  const projects = [
+  const projects: Project[] = [
     {
       id: 1,
       title: t('services.projects.0.title'),
@@ -185,19 +190,13 @@ export default function ServicesPage() {
   ]);
 
   return (
-  <main className="flex flex-col min-h-screen overflow-x-hidden text-white">
-  {/* JSON-LD for products */}
-  <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: jsonLd }} />
-      {/* Hero Section */}
-  <section className="py-12 md:py-24 bg-black relative overflow-hidden">
+    <main className="flex flex-col min-h-screen overflow-x-hidden text-white">
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: jsonLd }} />
+      <section className="py-12 md:py-24 bg-black relative overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-b from-primary/5 via-transparent to-transparent opacity-40" />
-  <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative">
           <div className="max-w-2xl sm:max-w-3xl md:max-w-4xl mx-auto text-center">
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8 }}
-            >
+            <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8 }}>
               <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 sm:mb-6">{t('services.title')}</h1>
               <p className="text-base sm:text-lg md:text-xl text-gray-300 leading-relaxed">{t('services.intro')}</p>
             </motion.div>
@@ -205,9 +204,8 @@ export default function ServicesPage() {
         </div>
       </section>
 
-      {/* Detailed Services Section */}
-  <section className="py-8 sm:py-12 md:py-24 bg-black">
-  <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="py-8 sm:py-12 md:py-24 bg-black">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 gap-4 sm:gap-6 md:gap-8">
             {services.map((service, index) => (
               <motion.div
@@ -233,28 +231,13 @@ export default function ServicesPage() {
         </div>
       </section>
 
-      {/* Contact CTA */}
-  <section className="py-12 md:py-24 bg-black relative overflow-hidden">
-  <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="max-w-xl sm:max-w-2xl md:max-w-4xl mx-auto text-center"
-          >
+      <section className="py-12 md:py-24 bg-black relative overflow-hidden">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="max-w-xl sm:max-w-2xl md:max-w-4xl mx-auto text-center">
             <h2 className="text-xl sm:text-2xl md:text-4xl font-bold mb-4 sm:mb-6">{t('services.contact_cta_title')}</h2>
             <p className="text-base sm:text-lg md:text-xl text-gray-400 mb-4 sm:mb-8">{t('services.contact_cta_p')}</p>
-            <motion.div
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              className="inline-block"
-            >
-              <Button
-                noHover
-                variant="white"
-                onClick={() => router.push('/contact?scroll=form')}
-                className="px-8 py-6 rounded-xl text-lg font-medium"
-              >
+            <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }} className="inline-block">
+              <Button noHover variant="white" onClick={() => router.push('/contact?scroll=form')} className="px-8 py-6 rounded-xl text-lg font-medium">
                 {t('services.contact_cta_button')} <ArrowRight className="ml-2" />
               </Button>
             </motion.div>
@@ -262,16 +245,9 @@ export default function ServicesPage() {
         </div>
       </section>
 
-      {/* Project Showcase Section - Placeholder for future content */}
-  <section className="py-12 md:py-24 bg-black">
-  <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8 }}
-            className="text-center mb-10 sm:mb-16"
-          >
+      <section className="py-12 md:py-24 bg-black">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.8 }} className="text-center mb-10 sm:mb-16">
             <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-2 sm:mb-4">{t('services.projects_title')}</h2>
             <p className="text-base sm:text-lg md:text-xl text-gray-400 max-w-xl sm:max-w-2xl mx-auto">{t('services.projects_desc')}</p>
           </motion.div>
