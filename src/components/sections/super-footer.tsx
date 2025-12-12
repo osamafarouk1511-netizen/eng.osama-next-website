@@ -18,7 +18,7 @@ const quickLinks = [
   { key: 'nav.solutions', href: '/solutions' },
   { key: 'nav.technology', href: '/technology' },
   { key: 'nav.contact', href: '/contact' },
-  { key: 'nav.parteners', href: '/parteners' },
+  { key: 'nav.partners', href: '/partners' },
 
 ];
 
@@ -109,9 +109,9 @@ export default function SuperFooter() {
           >
             <h3 className="text-xl font-semibold mb-6">{t('footer.quick_links_title')}</h3>
             <ul className="space-y-3">
-              {quickLinks.map(({ text, href, key }, index) => (
+              {quickLinks.map(({ key, href }, index) => (
                 <motion.li
-                  key={text ?? key}
+                  key={key}
                   initial={{ opacity: 0, x: -20 }}
                   whileInView={{ opacity: 1, x: 0 }}
                   transition={{ delay: index * 0.1 + 0.3 }}
@@ -121,7 +121,7 @@ export default function SuperFooter() {
                     className="text-gray-300 hover:text-white hover:translate-x-2 transition-all flex items-center"
                   >
                     <span className="mr-2">→</span>
-                    {text ?? t(key)}
+                    {t(key)}
                   </Link>
                 </motion.li>
               ))}
@@ -190,7 +190,7 @@ export default function SuperFooter() {
           transition={{ duration: 0.5, delay: 0.8 }}
           className="mt-16 pt-8 border-t border-white/10 flex flex-col md:flex-row justify-between items-center"
         >
-          <p className="text-gray-400 text-sm">{t('footer.copy_right', { year: new Date().getFullYear() })}</p>
+          <p className="text-gray-400 text-sm">{`${t('footer.copy_right')} 2025`}</p>
           <motion.button
             onClick={scrollToTop}
             whileHover={{ scale: 1.1, y: -5 }}

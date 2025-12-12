@@ -2,13 +2,14 @@
 'use client';
 
 import { motion, useScroll, useTransform } from 'framer-motion';
-import { useRef, useEffect, useState } from 'react';
+import { useRef, useEffect, useState, type ComponentType, type SVGProps } from 'react';
 import { Trophy, Star, Code, Globe } from 'lucide-react';
 import { useLanguage } from '@/lib/LanguageProvider';
 import en from '@/locales/en.json';
 import ar from '@/locales/ar.json';
 
-const iconMap: Record<string, any> = {
+type IconType = ComponentType<SVGProps<SVGSVGElement>>;
+const iconMap: Record<string, IconType> = {
   trophy: Trophy,
   star: Star,
   code: Code,
@@ -82,14 +83,23 @@ export default function AchievementTimeline() {
   const { t, lang } = useLanguage();
   const { scrollYProgress } = useScroll({
     target: containerRef,
-    offset: ["start end", "end start"]
+    offset: ["start end", "end start"],
   });
 
   const lineHeight = useTransform(scrollYProgress, [0, 1], ["0%", "100%"]);
 
-  // Get timeline data from locale object directly
-  let timeline = lang === 'AR' ? ar.about?.timeline : en.about?.timeline;
-  if (!Array.isArray(timeline)) timeline = [];
+  // Get timeline data from locale object directly and ensure typing
+  type Achievement = {
+    year?: string;
+    title?: string;
+    desc?: string;
+    description?: string;
+    icon?: string;
+    metric?: { value?: number; label?: string } | null;
+  };
+
+  const rawTimeline = lang === 'AR' ? ar.about?.timeline : en.about?.timeline;
+  const timeline: Achievement[] = Array.isArray(rawTimeline) ? (rawTimeline as Achievement[]) : [];
 
   return (
     <section className="py-24 bg-black relative overflow-hidden" ref={containerRef}>
@@ -122,7 +132,8 @@ export default function AchievementTimeline() {
             {timeline.map((achievement, index) => {
               const isEven = index % 2 === 0;
               // Optionally map icon if present, fallback to Trophy
-              const Icon = iconMap[achievement.icon?.toLowerCase?.()] || Trophy;
+              const iconKey = achievement.icon ? String(achievement.icon).toLowerCase() : '';
+              const Icon = (iconMap[iconKey] ?? Trophy) as IconType;
               return (
                 <motion.div
                   key={`${achievement.year || achievement.title || index}`}
@@ -141,11 +152,11 @@ export default function AchievementTimeline() {
                       </span>
                       <h3 className="text-xl font-semibold mb-2">{achievement.title}</h3>
                       <p className="text-gray-400 mb-4">{achievement.desc || achievement.description}</p>
-                      {achievement.metric && achievement.metric.value && (
+                      {typeof achievement.metric?.value === 'number' && (
                         <div className="flex items-center gap-2 text-2xl font-bold text-primary">
-                          <Counter end={achievement.metric.value} />
+                          <Counter end={achievement.metric!.value!} />
                           <span className="text-sm text-gray-400 font-normal">
-                            {achievement.metric.label}
+                            {achievement.metric!.label}
                           </span>
                         </div>
                       )}
