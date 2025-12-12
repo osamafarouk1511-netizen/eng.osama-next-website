@@ -1,13 +1,15 @@
-'use client';
+"use client";
 
 import { motion } from 'framer-motion';
 import { useState } from 'react';
 import { Send } from 'lucide-react';
+import { useLanguage } from '@/lib/LanguageProvider';
 
 export default function AnimatedContactSection() {
   const [isEmailFocused, setIsEmailFocused] = useState(false);
   const [isNameFocused, setIsNameFocused] = useState(false);
   const [isMessageFocused, setIsMessageFocused] = useState(false);
+  const { t } = useLanguage();
 
   // Deterministic values for hydration safety
   const bgShapes = Array.from({ length: 20 }, (_, i) => ({
@@ -65,7 +67,7 @@ export default function AnimatedContactSection() {
               transition={{ duration: 0.8, delay: 0.2 }}
               className="text-5xl font-bold mb-6"
             >
-              جاهز لتطوير أعمالك؟
+              {t('contact.animated.title')}
             </motion.h2>
             <motion.p
               initial={{ opacity: 0, y: 20 }}
@@ -73,7 +75,7 @@ export default function AnimatedContactSection() {
               transition={{ duration: 0.8, delay: 0.4 }}
               className="text-xl text-gray-300"
             >
-              تواصل معنا لمناقشة كيف يمكن لحلولنا التقنية أن تدعم نمو أعمالك وتحقق النجاح في العصر الرقمي.
+              {t('contact.animated.subtitle')}
             </motion.p>
           </motion.div>
 
@@ -91,16 +93,16 @@ export default function AnimatedContactSection() {
                 whileInView={{ opacity: 1, x: 0 }}
                 transition={{ duration: 0.5, delay: 0.7 }}
               >
-                <label htmlFor="ac-name" className="block text-sm font-medium mb-2">Name</label>
+                <label htmlFor="ac-name" className="block text-sm font-medium mb-2">{t('contact.label_name')}</label>
                 <div className="relative">
                   <motion.input
                     id="ac-name"
                     name="name"
                     type="text"
                     className="w-full bg-white/5 border border-white/10 rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-primary/50 transition-all"
-                    placeholder="Your name"
-                    aria-label="Your name"
-                    title="Your name"
+                    placeholder={t('contact.placeholder_name')}
+                    aria-label={t('contact.label_name')}
+                    title={t('contact.label_name')}
                     onFocus={() => setIsNameFocused(true)}
                     onBlur={() => setIsNameFocused(false)}
                   />
@@ -119,16 +121,16 @@ export default function AnimatedContactSection() {
                 whileInView={{ opacity: 1, x: 0 }}
                 transition={{ duration: 0.5, delay: 0.8 }}
               >
-                <label htmlFor="ac-email" className="block text-sm font-medium mb-2">Email</label>
+                <label htmlFor="ac-email" className="block text-sm font-medium mb-2">{t('contact.label_email')}</label>
                 <div className="relative">
                   <motion.input
                     id="ac-email"
                     name="email"
                     type="email"
                     className="w-full bg-white/5 border border-white/10 rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-primary/50 transition-all"
-                    placeholder="your@email.com"
-                    aria-label="Your email address"
-                    title="Your email address"
+                    placeholder={t('contact.placeholder_email')}
+                    aria-label={t('contact.label_email')}
+                    title={t('contact.label_email')}
                     onFocus={() => setIsEmailFocused(true)}
                     onBlur={() => setIsEmailFocused(false)}
                   />
@@ -149,16 +151,16 @@ export default function AnimatedContactSection() {
               transition={{ duration: 0.5, delay: 0.9 }}
               className="mt-6"
             >
-              <label htmlFor="ac-message" className="block text-sm font-medium mb-2">Message</label>
+              <label htmlFor="ac-message" className="block text-sm font-medium mb-2">{t('contact.label_message')}</label>
               <div className="relative">
                 <motion.textarea
                   id="ac-message"
                   name="message"
                   rows={6}
                   className="w-full bg-white/5 border border-white/10 rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-primary/50 transition-all"
-                  placeholder="Tell us about your project..."
-                  aria-label="Your message"
-                  title="Your message"
+                  placeholder={t('contact.placeholder_message')}
+                  aria-label={t('contact.label_message')}
+                  title={t('contact.label_message')}
                   onFocus={() => setIsMessageFocused(true)}
                   onBlur={() => setIsMessageFocused(false)}
                 />
@@ -185,7 +187,7 @@ export default function AnimatedContactSection() {
                 aria-label="Send message"
                 title="Send message"
               >
-                <span className="relative z-10">Send Message</span>
+                <span className="relative z-10">{t('contact.send_message')}</span>
                 <motion.div
                   className="absolute inset-0 bg-white"
                   initial={{ x: "-100%" }}

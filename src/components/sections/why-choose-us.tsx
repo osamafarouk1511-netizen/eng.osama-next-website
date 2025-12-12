@@ -1,48 +1,20 @@
-'use client';
+"use client";
 
 import { motion } from 'framer-motion';
 import { Server, Shield, Zap, Users, Code2, Heart } from 'lucide-react';
+import { useLanguage } from '@/lib/LanguageProvider';
 
 const features = [
-  {
-    icon: Server,
-    title: "بنية تحتية متطورة",
-    description: "حلول تقنية قابلة للتوسع وآمنة تلبي احتياجات المؤسسات الحديثة.",
-    color: "from-blue-500/20 to-blue-600/20"
-  },
-  {
-    icon: Shield,
-    title: "أمان عالي",
-    description: "بروتوكولات أمنية متقدمة ومراقبة فورية لحماية بياناتك بالكامل.",
-    color: "from-green-500/20 to-green-600/20"
-  },
-  {
-    icon: Zap,
-    title: "سرعة في الأداء",
-    description: "أداء سريع ونشر فوري للأنظمة والتطبيقات الحيوية.",
-    color: "from-yellow-500/20 to-yellow-600/20"
-  },
-  {
-    icon: Users,
-    title: "دعم فني متواصل",
-    description: "فريق دعم متخصص متواجد لخدمتك على مدار الساعة.",
-    color: "from-purple-500/20 to-purple-600/20"
-  },
-  {
-    icon: Code2,
-    title: "تطوير مخصص",
-    description: "حلول وبرمجيات مصممة خصيصاً لتناسب احتياجات أعمالك الفريدة.",
-    color: "from-red-500/20 to-red-600/20"
-  },
-  {
-    icon: Heart,
-    title: "رضا العملاء",
-    description: "نسبة رضا عالية وشراكات طويلة الأمد مع عملائنا.",
-    color: "from-pink-500/20 to-pink-600/20"
-  }
+  { icon: Server, key: 'why.features.0', color: 'from-blue-500/20 to-blue-600/20' },
+  { icon: Shield, key: 'why.features.1', color: 'from-green-500/20 to-green-600/20' },
+  { icon: Zap, key: 'why.features.2', color: 'from-yellow-500/20 to-yellow-600/20' },
+  { icon: Users, key: 'why.features.3', color: 'from-purple-500/20 to-purple-600/20' },
+  { icon: Code2, key: 'why.features.4', color: 'from-red-500/20 to-red-600/20' },
+  { icon: Heart, key: 'why.features.5', color: 'from-pink-500/20 to-pink-600/20' },
 ];
 
 export default function WhyChooseUs() {
+  const { t } = useLanguage();
   return (
     <section className="py-24 bg-black relative overflow-hidden">
       {/* Background gradient */}
@@ -56,16 +28,14 @@ export default function WhyChooseUs() {
           transition={{ duration: 0.8 }}
           className="text-center mb-16"
         >
-          <h2 className="text-4xl font-bold mb-4">لماذا تختار CSS؟</h2>
-          <p className="text-xl text-gray-400 max-w-2xl mx-auto">
-            نجمع بين أحدث التقنيات والخبرة لنقدم لك حلولاً متكاملة تدعم نجاح أعمالك.
-          </p>
+          <h2 className="text-4xl font-bold mb-4">{t('why.title')}</h2>
+          <p className="text-xl text-gray-400 max-w-2xl mx-auto">{t('why.subtitle')}</p>
         </motion.div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {features.map((feature, index) => (
             <motion.div
-              key={feature.title}
+              key={feature.key}
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
@@ -76,8 +46,8 @@ export default function WhyChooseUs() {
                 <div className={`absolute inset-0 bg-gradient-to-br ${feature.color} opacity-0 group-hover:opacity-100 transition-opacity rounded-2xl`} />
                 <div className="relative z-10">
                   <feature.icon className="w-12 h-12 text-white mb-4" />
-                  <h3 className="text-xl font-semibold mb-3">{feature.title}</h3>
-                  <p className="text-gray-400">{feature.description}</p>
+                  <h3 className="text-xl font-semibold mb-3">{t(`${feature.key}.title`)}</h3>
+                  <p className="text-gray-400">{t(`${feature.key}.description`)}</p>
                 </div>
               </div>
             </motion.div>

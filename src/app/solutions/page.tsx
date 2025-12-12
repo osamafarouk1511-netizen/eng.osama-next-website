@@ -1,42 +1,14 @@
-'use client';
+"use client";
 
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Button } from '@/components/ui/button';
 import { ArrowRight, Code, CloudCog, Shield, Blocks, MoveRight, Zap } from 'lucide-react';
-
-const solutions = [
-  {
-    title: 'تطوير برمجيات مخصصة',
-    description: 'حلول مصممة خصيصًا لتلبية احتياجات عملك الفريدة.',
-    icon: Code,
-    highlights: ['تقنيات حديثة', 'هندسة قابلة للتوسع', 'معايير كود نظيف'],
-    benefits: 'دورات تطوير أسرع بنسبة 30%'
-  },
-  {
-    title: 'حلول سحابية',
-    description: 'استفد من قوة الحوسبة السحابية من أجل القابلية للتوسع والموثوقية.',
-    icon: CloudCog,
-    highlights: ['خبرة في AWS و Azure', 'ترحيل للسحابة', 'هندسة بدون خوادم'],
-    benefits: 'ضمان جاهزية 99.9%'
-  },
-  {
-    title: 'الأمن السيبراني',
-    description: 'حماية أصولك الرقمية بحلول أمنية بمستوى المؤسسات.',
-    icon: Shield,
-    highlights: ['كشف التهديدات', 'تشفير البيانات', 'تدقيقات أمنية'],
-    benefits: 'لا توجد خروقات أمنية'
-  },
-  {
-    title: 'الذكاء الاصطناعي وتعلم الآلة',
-    description: 'حوّل بياناتك إلى رؤى قابلة للتنفيذ باستخدام حلول ذكاء اصطناعي متقدمة.',
-    icon: Blocks,
-    highlights: ['تحليلات تنبؤية', 'معالجة اللغة الطبيعية', 'الرؤية الحاسوبية'],
-    benefits: 'تحسين الكفاءة بنسبة 40%'
-  }
-];
+import { useLanguage } from '@/lib/LanguageProvider';
 
 export default function SolutionsPage() {
+  const { t } = useLanguage();
+
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
@@ -74,6 +46,13 @@ export default function SolutionsPage() {
     }
   };
 
+  const solutions = [
+    { id: 'sol-0', icon: Code, ...(() => ({ title: t('solutions.section.items.0.title'), description: t('solutions.section.items.0.description'), highlights: t('solutions.section.items.0.highlights').split('||'), benefits: t('solutions.section.items.0.benefits') }))() },
+    { id: 'sol-1', icon: CloudCog, ...(() => ({ title: t('solutions.section.items.1.title'), description: t('solutions.section.items.1.description'), highlights: t('solutions.section.items.1.highlights').split('||'), benefits: t('solutions.section.items.1.benefits') }))() },
+    { id: 'sol-2', icon: Shield, ...(() => ({ title: t('solutions.section.items.2.title'), description: t('solutions.section.items.2.description'), highlights: t('solutions.section.items.2.highlights').split('||'), benefits: t('solutions.section.items.2.benefits') }))() },
+    { id: 'sol-3', icon: Blocks, ...(() => ({ title: t('solutions.section.items.3.title'), description: t('solutions.section.items.3.description'), highlights: t('solutions.section.items.3.highlights').split('||'), benefits: t('solutions.section.items.3.benefits') }))() }
+  ];
+
   return (
     <div className="min-h-screen bg-black text-white overflow-hidden">
       {/* Hero Section */}
@@ -96,10 +75,10 @@ export default function SolutionsPage() {
             className="text-center"
           >
             <h1 className="text-4xl md:text-6xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-white to-gray-400 mb-6">
-              حلول مؤسسية قابلة للتوسع
+              {t('solutions.section.title')}
             </h1>
             <p className="text-lg md:text-xl text-gray-300 max-w-3xl mx-auto mb-8">
-              حول أعمالك باستخدام حلول تقنية متطورة مصممة للمستقبل.
+              {t('solutions.section.p')}
             </p>
             <motion.div
               whileHover={{ scale: 1.05 }}
@@ -108,7 +87,7 @@ export default function SolutionsPage() {
               <Button
                 className="bg-white/10 hover:bg-white/20 text-white px-8 py-6 rounded-xl text-lg font-medium backdrop-blur-sm border border-white/10"
               >
-                استكشف الحلول <ArrowRight className="ml-2" />
+                {t('solutions.section.cta_button')} <ArrowRight className="ml-2" />
               </Button>
             </motion.div>
           </motion.div>
@@ -127,7 +106,7 @@ export default function SolutionsPage() {
           >
             {solutions.map((solution) => (
               <motion.div
-                key={solution.title}
+                key={solution.id}
                 variants={itemVariants}
                 whileHover={{ scale: 1.02 }}
                 className="card-dark bg-neutral-900/60 backdrop-blur-xl rounded-2xl p-8 border border-white/10"
@@ -180,13 +159,8 @@ export default function SolutionsPage() {
             transition={{ duration: 0.8 }}
             className="text-center"
           >
-            <h2 className="text-3xl md:text-4xl font-bold mb-6">
-              هل أنت مستعد لتحويل عملك؟
-            </h2>
-            <p className="text-gray-300 mb-8 max-w-2xl mx-auto">
-              دعنا نناقش كيف يمكن لحلولنا أن تساعدك في تحقيق أهداف عملك.
-              احجز استشارة مع خبرائنا اليوم.
-            </p>
+            <h2 className="text-3xl md:text-4xl font-bold mb-6">{t('solutions.section.cta_title')}</h2>
+            <p className="text-gray-300 mb-8 max-w-2xl mx-auto">{t('solutions.section.cta_p')}</p>
             <motion.div
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
@@ -195,7 +169,7 @@ export default function SolutionsPage() {
               <Button
                 className="bg-white text-black hover:bg-white/90 px-8 py-6 rounded-xl text-lg font-medium"
               >
-                احجز استشارة <ArrowRight className="ml-2" />
+                {t('solutions.section.cta_button')} <ArrowRight className="ml-2" />
               </Button>
             </motion.div>
           </motion.div>

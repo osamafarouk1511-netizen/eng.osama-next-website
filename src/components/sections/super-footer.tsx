@@ -1,32 +1,37 @@
-'use client';
+"use client";
 
 import { motion } from 'framer-motion';
 import { Facebook, Twitter, Linkedin, Instagram, Mail, Phone, MapPin, ArrowUpCircle } from 'lucide-react';
 import Link from 'next/link';
+import { useLanguage } from '@/lib/LanguageProvider';
 
 const socialLinks = [
-  { icon: Facebook, href: '#', label: 'فيسبوك' },
-  { icon: Twitter, href: '#', label: 'تويتر' },
-  { icon: Linkedin, href: '#', label: 'لينكدإن' },
-  { icon: Instagram, href: '#', label: 'انستغرام' },
+  { icon: Facebook, href: '#', key: 'footer.social.facebook' },
+  { icon: Twitter, href: '#', key: 'footer.social.twitter' },
+  { icon: Linkedin, href: '#', key: 'footer.social.linkedin' },
+  { icon: Instagram, href: '#', key: 'footer.social.instagram' },
 ];
 
 const quickLinks = [
-  { text: 'من نحن', href: '/about' },
-  { text: 'خدماتنا', href: '/services' },
-  { text: 'آراء العملاء', href: '/testimonials' },
-  { text: 'اتصل بنا', href: '/contact' },
+  { key: 'nav.about', href: '/about' },
+  { key: 'nav.services', href: '/services' },
+  { key: 'nav.solutions', href: '/solutions' },
+  { key: 'nav.technology', href: '/technology' },
+  { key: 'nav.contact', href: '/contact' },
+  { key: 'nav.parteners', href: '/parteners' },
+
 ];
 
 const services = [
-  'حلول ERP',
-  'إدارة النظم',
-  'تطوير الويب',
-  'حلول سحابية',
-  'خدمات أمنية',
+  'solutions.erp',
+  'solutions.sys_admin',
+  'solutions.web_dev',
+  'solutions.cloud',
+  'solutions.security',
 ];
 
 export default function SuperFooter() {
+  const { t } = useLanguage();
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
@@ -79,21 +84,18 @@ export default function SuperFooter() {
             transition={{ duration: 0.5 }}
           >
             <h2 className="text-2xl font-bold mb-6">CSS</h2>
-            <p className="text-gray-300 mb-6">
-              تحويل الأعمال من خلال حلول تقنية مبتكرة.
-              شريكك الموثوق في التحول الرقمي.
-            </p>
+            <p className="text-gray-300 mb-6">{t('footer.description')}</p>
             <div className="flex space-x-4">
-              {socialLinks.map(({ icon: Icon, href, label }) => (
+              {socialLinks.map(({ icon: Icon, href, key }) => (
                 <motion.a
-                  key={label}
+                  key={key}
                   href={href}
                   whileHover={{ scale: 1.2, rotate: 5 }}
                   whileTap={{ scale: 0.9 }}
                   className="text-white/80 hover:text-white transition-colors"
                 >
                   <Icon size={24} />
-                  <span className="sr-only">{label}</span>
+                  <span className="sr-only">{t(key)}</span>
                 </motion.a>
               ))}
             </div>
@@ -105,11 +107,11 @@ export default function SuperFooter() {
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.2 }}
           >
-            <h3 className="text-xl font-semibold mb-6">روابط سريعة</h3>
+            <h3 className="text-xl font-semibold mb-6">{t('footer.quick_links_title')}</h3>
             <ul className="space-y-3">
-              {quickLinks.map(({ text, href }, index) => (
+              {quickLinks.map(({ text, href, key }, index) => (
                 <motion.li
-                  key={text}
+                  key={text ?? key}
                   initial={{ opacity: 0, x: -20 }}
                   whileInView={{ opacity: 1, x: 0 }}
                   transition={{ delay: index * 0.1 + 0.3 }}
@@ -119,7 +121,7 @@ export default function SuperFooter() {
                     className="text-gray-300 hover:text-white hover:translate-x-2 transition-all flex items-center"
                   >
                     <span className="mr-2">→</span>
-                    {text}
+                    {text ?? t(key)}
                   </Link>
                 </motion.li>
               ))}
@@ -132,18 +134,18 @@ export default function SuperFooter() {
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.4 }}
           >
-            <h3 className="text-xl font-semibold mb-6">خدماتنا</h3>
+            <h3 className="text-xl font-semibold mb-6">{t('footer.services_title')}</h3>
             <ul className="space-y-3">
-              {services.map((service, index) => (
+              {services.map((serviceKey, index) => (
                 <motion.li
-                  key={service}
+                  key={serviceKey}
                   initial={{ opacity: 0, x: -20 }}
                   whileInView={{ opacity: 1, x: 0 }}
                   transition={{ delay: index * 0.1 + 0.3 }}
                   className="text-gray-300 flex items-center"
                 >
                   <span className="mr-2 text-primary">•</span>
-                  {service}
+                  {t(serviceKey)}
                 </motion.li>
               ))}
             </ul>
@@ -156,7 +158,7 @@ export default function SuperFooter() {
             transition={{ duration: 0.5, delay: 0.6 }}
             className="space-y-4"
           >
-            <h3 className="text-xl font-semibold mb-6">اتصل بنا</h3>
+            <h3 className="text-xl font-semibold mb-6">{t('footer.contact_title')}</h3>
             <motion.div
               whileHover={{ scale: 1.05 }}
               className="flex items-center text-gray-300"
@@ -176,7 +178,7 @@ export default function SuperFooter() {
               className="flex items-center text-gray-300"
             >
               <MapPin className="mr-3" size={20} />
-              <p>Helmiet El-Zaitoun, Cairo, Egypt</p>
+              <p>{t('footer.address')}</p>
             </motion.div>
           </motion.div>
         </div>
@@ -188,19 +190,17 @@ export default function SuperFooter() {
           transition={{ duration: 0.5, delay: 0.8 }}
           className="mt-16 pt-8 border-t border-white/10 flex flex-col md:flex-row justify-between items-center"
         >
-          <p className="text-gray-400 text-sm">
-            © {new Date().getFullYear()} CSS. جميع الحقوق محفوظة.
-          </p>
+          <p className="text-gray-400 text-sm">{t('footer.copy_right', { year: new Date().getFullYear() })}</p>
           <motion.button
             onClick={scrollToTop}
             whileHover={{ scale: 1.1, y: -5 }}
             whileTap={{ scale: 0.9 }}
             className="mt-4 md:mt-0 text-white/80 hover:text-white transition-colors flex items-center"
-            aria-label="العودة للأعلى"
-            title="العودة للأعلى"
+            aria-label={t('footer.back_to_top')}
+            title={t('footer.back_to_top')}
           >
             <ArrowUpCircle className="mr-2" size={24} />
-            العودة للأعلى
+            {t('footer.back_to_top')}
           </motion.button>
         </motion.div>
       </div>

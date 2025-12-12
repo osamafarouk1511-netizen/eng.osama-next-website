@@ -3,48 +3,20 @@
 import React, { useEffect, useState, useRef } from 'react';
 import { motion } from 'framer-motion';
 import { Database, Cloud, Code2, Cpu, Brain, Lock } from 'lucide-react';
-// Removed unused imports
-
-const technologies = [
-  {
-    category: 'Backend Development',
-    icon: Database,
-    techs: ['Node.js', 'Python', 'Java', 'Go', 'PostgreSQL', 'MongoDB'],
-    description: 'Robust and scalable backend solutions'
-  },
-  {
-    category: 'Frontend Development',
-    icon: Code2,
-    techs: ['React', 'Next.js', 'TypeScript', 'Tailwind CSS', 'Vue.js'],
-    description: 'Modern and responsive user interfaces'
-  },
-  {
-    category: 'Cloud & DevOps',
-    icon: Cloud,
-    techs: ['AWS', 'Azure', 'Docker', 'Kubernetes', 'CI/CD'],
-    description: 'Scalable cloud infrastructure'
-  },
-  {
-    category: 'AI & Machine Learning',
-    icon: Brain,
-    techs: ['TensorFlow', 'PyTorch', 'OpenAI', 'Computer Vision', 'NLP'],
-    description: 'Cutting-edge AI solutions'
-  },
-  {
-    category: 'Cybersecurity',
-    icon: Lock,
-    techs: ['Encryption', 'Penetration Testing', 'Security Audits', 'WAF'],
-    description: 'Enterprise-grade security'
-  },
-  {
-    category: 'IoT & Edge Computing',
-    icon: Cpu,
-    techs: ['IoT Platforms', 'Edge Computing', 'Sensors', 'Real-time Analytics'],
-    description: 'Connected device solutions'
-  }
-];
+import { useLanguage } from '@/lib/LanguageProvider';
 
 export default function TechnologyPage() {
+  const { t } = useLanguage();
+
+  const icons = [Database, Code2, Cloud, Brain, Lock, Cpu];
+
+  const items = Array.from({ length: 6 }).map((_, i) => ({
+    category: t(`technology.section.items.${i}.category`),
+    description: t(`technology.section.items.${i}.description`),
+    techs: t(`technology.section.items.${i}.techs`).split('||'),
+    icon: icons[i]
+  }));
+
   return (
     <div className="min-h-screen bg-black text-white pt-32 pb-20">
       {/* Hero Section */}
@@ -54,7 +26,7 @@ export default function TechnologyPage() {
           animate={{ opacity: 1 }}
           className="absolute inset-0 bg-gradient-to-b from-primary/20 via-secondary/10 to-transparent opacity-30 blur-3xl"
         />
-        
+
         <div className="container mx-auto px-4 relative z-10">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -63,10 +35,10 @@ export default function TechnologyPage() {
             className="text-center max-w-4xl mx-auto"
           >
             <h1 className="text-4xl md:text-6xl font-bold mb-6 bg-clip-text text-transparent bg-gradient-to-r from-white to-gray-400">
-              أحدث تقنيات التكنولوجيا
+              {t('technology.section.title')}
             </h1>
             <p className="text-lg md:text-xl text-gray-300 mb-8">
-              نستخدم أحدث التقنيات لبناء حلول قابلة للتوسع، آمنة، ومبتكرة لعملائنا.
+              {t('technology.section.p')}
             </p>
           </motion.div>
         </div>
@@ -81,7 +53,7 @@ export default function TechnologyPage() {
             transition={{ duration: 0.5 }}
             className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
           >
-            {technologies.map((tech, index) => (
+            {items.map((tech, index) => (
               <motion.div
                 key={tech.category}
                 initial={{ opacity: 0, y: 20 }}
@@ -120,7 +92,7 @@ export default function TechnologyPage() {
           animate={{ opacity: 1 }}
           className="absolute inset-0 bg-gradient-to-t from-primary/10 via-secondary/5 to-transparent opacity-30 blur-3xl"
         />
-        
+
         <div className="container mx-auto px-4 relative z-10">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-4xl mx-auto">
             <motion.div
@@ -129,10 +101,10 @@ export default function TechnologyPage() {
               transition={{ delay: 0.2 }}
               className="text-center"
             >
-              <h3 className="text-4xl font-bold text-primary mb-2">
-                <CountUp target={20} suffix="+" duration={1400} />
+                <h3 className="text-4xl font-bold text-primary mb-2">
+                <CountUpTech target={20} suffix="+" duration={1400} />
               </h3>
-              <p className="text-gray-400">التقنيات المتقنة</p>
+              <p className="text-gray-400">{t('technology.section.stats.0')}</p>
             </motion.div>
             <motion.div
               initial={{ opacity: 0, y: 20 }}
@@ -140,10 +112,10 @@ export default function TechnologyPage() {
               transition={{ delay: 0.3 }}
               className="text-center"
             >
-              <h3 className="text-4xl font-bold text-primary mb-2">
-                <CountUp target={15} suffix="+" duration={1400} />
+                <h3 className="text-4xl font-bold text-primary mb-2">
+                <CountUpTech target={15} suffix="+" duration={1400} />
               </h3>
-              <p className="text-gray-400">المشاريع المُسلمة</p>
+              <p className="text-gray-400">{t('technology.section.stats.1')}</p>
             </motion.div>
             <motion.div
               initial={{ opacity: 0, y: 20 }}
@@ -151,10 +123,10 @@ export default function TechnologyPage() {
               transition={{ delay: 0.4 }}
               className="text-center"
             >
-              <h3 className="text-4xl font-bold text-primary mb-2">
-                <CountUp target={24} suffix="/7" duration={1400} />
+                <h3 className="text-4xl font-bold text-primary mb-2">
+                <CountUpTech target={24} suffix="/7" duration={1400} />
               </h3>
-              <p className="text-gray-400">الدعم الفني</p>
+              <p className="text-gray-400">{t('technology.section.stats.2')}</p>
             </motion.div>
           </div>
         </div>
@@ -163,7 +135,7 @@ export default function TechnologyPage() {
   );
 }
 
-function CountUp({ target, suffix = '', duration = 1200 }: { target: number; suffix?: string; duration?: number }) {
+function CountUpTech({ target, suffix = '', duration = 1200 }: { target: number; suffix?: string; duration?: number }) {
   const [value, setValue] = useState(0);
   const ref = useRef<HTMLSpanElement | null>(null);
   const startedRef = useRef(false);

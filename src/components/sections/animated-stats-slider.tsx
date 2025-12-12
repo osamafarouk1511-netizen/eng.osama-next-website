@@ -1,8 +1,9 @@
-'use client';
+"use client";
 
 import { motion } from 'framer-motion';
 import { useEffect, useState, useRef } from 'react';
 import { ChevronLeft, ChevronRight, Star } from 'lucide-react';
+import { useLanguage } from '@/lib/LanguageProvider';
 
 const testimonials = [
   {
@@ -29,10 +30,10 @@ const testimonials = [
 ];
 
 const stats = [
-  { value: 98, suffix: '%', label: 'رضا العملاء' },
-  { value: 25, suffix: '+', label: 'مشروع ناجح' },
-  { value: 2, suffix: '+', label: 'سنوات خبرة' },
-  { value: 24, suffix: '/7', label: 'دعم فني متواصل' },
+  { value: 98, suffix: '%', key: 'stats.customer_satisfaction' },
+  { value: 25, suffix: '+', key: 'stats.successful_projects' },
+  { value: 2, suffix: '+', key: 'stats.years_experience' },
+  { value: 24, suffix: '/7', key: 'stats.support' },
 ];
 
 function CountUp({ target, suffix = '', duration = 1200 }: { target: number; suffix?: string; duration?: number }) {
@@ -76,6 +77,7 @@ function CountUp({ target, suffix = '', duration = 1200 }: { target: number; suf
 
 export default function AnimatedStatsSlider() {
   const [activeSlide, setActiveSlide] = useState(0);
+  const { t } = useLanguage();
 
   const nextSlide = () => {
     setActiveSlide((prev) => (prev + 1) % testimonials.length);
@@ -140,7 +142,7 @@ export default function AnimatedStatsSlider() {
         >
           {stats.map((stat, index) => (
             <motion.div
-              key={stat.label}
+              key={stat.key}
               className="text-center"
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -160,7 +162,7 @@ export default function AnimatedStatsSlider() {
               >
                 <CountUp target={stat.value} suffix={stat.suffix} duration={1400} />
               </motion.div>
-              <div className="text-gray-400">{stat.label}</div>
+              <div className="text-gray-400">{t(stat.key)}</div>
             </motion.div>
           ))}
         </motion.div>
@@ -176,10 +178,10 @@ export default function AnimatedStatsSlider() {
               className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-12 bg-white/10 hover:bg-white/20 rounded-full p-2 z-10"
               whileHover={{ scale: 1.1 }}
               whileTap={{ scale: 0.9 }}
-              aria-label="Previous testimonial"
-              title="Previous testimonial"
+              aria-label={t('navigation.previous_testimonial')}
+              title={t('navigation.previous_testimonial')}
             >
-              <span className="sr-only">Previous testimonial</span>
+              <span className="sr-only">{t('navigation.previous_testimonial')}</span>
               <ChevronLeft className="w-6 h-6" />
             </motion.button>
             <motion.button
@@ -187,10 +189,10 @@ export default function AnimatedStatsSlider() {
               className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-12 bg-white/10 hover:bg-white/20 rounded-full p-2 z-10"
               whileHover={{ scale: 1.1 }}
               whileTap={{ scale: 0.9 }}
-              aria-label="Next testimonial"
-              title="Next testimonial"
+              aria-label={t('navigation.next_testimonial')}
+              title={t('navigation.next_testimonial')}
             >
-              <span className="sr-only">Next testimonial</span>
+              <span className="sr-only">{t('navigation.next_testimonial')}</span>
               <ChevronRight className="w-6 h-6" />
             </motion.button>
 

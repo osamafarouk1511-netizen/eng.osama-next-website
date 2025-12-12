@@ -1,64 +1,59 @@
-'use client';
+"use client";
 
 import { motion } from 'framer-motion';
 import { Database, Server, Globe, ShoppingCart, Code2, Cloud, Shield } from 'lucide-react';
 import { AnimatedServiceCard } from '../ui/animated-service-card';
 import CurvedBackground from '../ui/curved-background';
-
-const services = [
-  {
-    title: 'نظام ERP متكامل لإدارة الأعمال',
-    description:
-      'نظام موحّد يدير المبيعات، المخزون، المحاسبة والمالية من لوحة تحكم واحدة. تقارير مالية دقيقة وتكامل جاهز مع أنظمتك الحالية لخفض الأخطاء وتسريع العمليات.',
-    icon: Database,
-    tech: ['نُسخة خفيفة (ERP Lite)', 'نُسخة متقدمة', 'تقارير مالية متعددة'],
-  },
-  {
-    title: 'نظام إدارة الموارد البشرية',
-    description:
-      'لوحة شاملة لإدارة الموظفين: الحضور، الرواتب، الإجازات، وسجلات الأداء مع تقارير قابلة للتصدير ودعم قوانين الرواتب المحلية.',
-    icon: Server,
-    tech: ['سجلات الموظفين', 'الحضور والانصراف', 'حساب الرواتب'],
-  },
-  {
-    title: 'الفاتورة الإلكترونية (متوافق مع المصلحة)',
-    description:
-      'إصدار وإدارة الفواتير الإلكترونية متوافق مع مصلحة الضرائب المصرية، مع توقيع رقمي وأرشفة آمنة لتبسيط المحاسبة والامتثال.',
-    icon: Globe,
-    tech: ['تكامل ضريبي', 'توقيع رقمي', 'أرشفة وتقارير فورية'],
-  },
-  {
-    title: 'نظام نقاط البيع (POS) سريع ومرن',
-    description:
-      'واجهة كاشير سريعة تدير عمليات البيع والدفع وتزامن المخزون لحظيًا. مناسب للمحلات والمتاجر مع تقارير مبيعات مفصلة.',
-    icon: ShoppingCart,
-    tech: ['نقاط بيع (POS)', 'مزامنة المخزون', 'تقارير مبيعات فورية'],
-  },
-  {
-    title: 'تطوير برمجيات حسب الطلب',
-    description:
-      'بناء تطبيقات ويب، موبايل أو مكتبية مخصّصة لعملياتك، مع تسليم مرحلي، اختبارات قبول عملاء وضمان جودة برمجية.',
-    icon: Code2,
-    tech: ['تطبيقات ويب', 'تطبيقات موبايل', 'حلول مكتبية'],
-  },
-  {
-    title: 'حلول سحابية مُدارة',
-    description:
-      'نقل وتشغيل تطبيقاتك على سحابات موثوقة مع إعداد بنية قابلة للتوسع، نسخ احتياطي وإستراتيجيات استعادة الطوارئ.',
-    icon: Cloud,
-    tech: ['استضافة سحابية', 'تكامل الأنظمة', 'نسخ احتياطي واستعادة'],
-  },
-  {
-    title: 'الأمن السيبراني وإدارة المخاطر',
-    description:
-      'حماية متكاملة: فحوصات ثغرات دورية، اختبار اختراق، وتشفير البيانات لضمان استمرارية العمل وامتثال المعايير.',
-    icon: Shield,
-    tech: ['تدقيق أمني', 'اختبار اختراق', 'تشفير وامتثال'],
-  },
-];
+import { useLanguage } from '@/lib/LanguageProvider';
 
 
 export default function ServicesSection() {
+  const { t } = useLanguage();
+
+  const services = [
+    {
+      title: t('services.section.items.0.title'),
+      description: t('services.section.items.0.description'),
+      icon: Database,
+      tech: t('services.section.items.0.tech').split('||'),
+    },
+    {
+      title: t('services.section.items.1.title'),
+      description: t('services.section.items.1.description'),
+      icon: Server,
+      tech: t('services.section.items.1.tech').split('||'),
+    },
+    {
+      title: t('services.section.items.2.title'),
+      description: t('services.section.items.2.description'),
+      icon: Globe,
+      tech: t('services.section.items.2.tech').split('||'),
+    },
+    {
+      title: t('services.section.items.3.title'),
+      description: t('services.section.items.3.description'),
+      icon: ShoppingCart,
+      tech: t('services.section.items.3.tech').split('||'),
+    },
+    {
+      title: t('services.section.items.4.title'),
+      description: t('services.section.items.4.description'),
+      icon: Code2,
+      tech: t('services.section.items.4.tech').split('||'),
+    },
+    {
+      title: t('services.section.items.5.title'),
+      description: t('services.section.items.5.description'),
+      icon: Cloud,
+      tech: t('services.section.items.5.tech').split('||'),
+    },
+    {
+      title: t('services.section.items.6.title'),
+      description: t('services.section.items.6.description'),
+      icon: Shield,
+      tech: t('services.section.items.6.tech').split('||'),
+    },
+  ];
   return (
     <section className="relative py-24 bg-black">
       <CurvedBackground />
@@ -70,10 +65,10 @@ export default function ServicesSection() {
           transition={{ duration: 0.5 }}
           className="text-center mb-16"
         >
-          <h2 className="text-4xl md:text-6xl font-bold mb-6 bg-clip-text text-transparent bg-gradient-to-r from-white to-gray-400">خدماتنا</h2>
-          <p className="text-lg md:text-xl text-gray-300 max-w-2xl mx-auto">
-            في CSS نقدم حلولاً تقنية متكاملة تدعم نمو أعمالك وتواكب أحدث التطورات الرقمية.
-          </p>
+            <h2 className="text-4xl md:text-6xl font-bold mb-6 bg-clip-text text-transparent bg-gradient-to-r from-white to-gray-400">{t('services.section.title')}</h2>
+            <p className="text-lg md:text-xl text-gray-300 max-w-2xl mx-auto">
+              {t('services.section.p')}
+            </p>
         </motion.div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
@@ -88,7 +83,7 @@ export default function ServicesSection() {
 
         {/* YouTube Videos Section */}
         <div className="mt-24">
-          <h2 className="text-3xl font-bold mb-8 text-center text-[var(--color-navy)]">فيديوهات القناة</h2>
+          <h2 className="text-3xl font-bold mb-8 text-center text-[var(--color-navy)]">{t('services.section.videos_title')}</h2>
           <div className="grid grid-cols-3 gap-8">
             {/* Top row */}
             <div className="rounded-xl shadow-lg bg-[var(--color-sky)] p-4 flex flex-col items-center border-2 border-[var(--color-blue)] col-span-1" dir="rtl">
@@ -103,7 +98,7 @@ export default function ServicesSection() {
                 className="rounded-lg mb-4 border border-[var(--color-blue)]"
               ></iframe>
               <div className="font-bold text-xl text-center text-white" style={{color: '#fff'}}>
-                تكامل الفاتورة الإلكترونية
+                {t('services.section.videos.0.title')}
               </div>
             </div>
             <div className="rounded-xl shadow-lg bg-[var(--color-sky)] p-4 flex flex-col items-center border-2 border-[var(--color-blue)] col-span-1" dir="rtl">
@@ -118,7 +113,7 @@ export default function ServicesSection() {
                 className="rounded-lg mb-4 border border-[var(--color-blue)]"
               ></iframe>
               <div className="font-bold text-xl text-center text-white" style={{color: '#fff'}}>
-                مميزات وفوائد نقاط البيع الذكية
+                {t('services.section.videos.1.title')}
               </div>
             </div>
             <div className="rounded-xl shadow-lg bg-[var(--color-sky)] p-4 flex flex-col items-center border-2 border-[var(--color-blue)] col-span-1" dir="rtl">
@@ -133,7 +128,7 @@ export default function ServicesSection() {
                 className="rounded-lg mb-4 border border-[var(--color-blue)]"
               ></iframe>
               <div className="font-bold text-xl text-center text-white" style={{color: '#fff'}}>
-                نظرة عامة على نظام CSS ERP
+                {t('services.section.videos.2.title')}
               </div>
             </div>
             {/* Bottom row */}
@@ -149,7 +144,7 @@ export default function ServicesSection() {
                 className="rounded-lg mb-4 border border-[var(--color-blue)]"
               ></iframe>
               <div className="font-bold text-xl text-center text-white" style={{color: '#fff'}}>
-                الأمن السيبراني وإدارة المخاطر
+                {t('services.section.videos.3.title')}
               </div>
             </div>
             <div className="rounded-xl shadow-lg bg-[var(--color-sky)] p-4 flex flex-col items-center border-2 border-[var(--color-blue)] col-span-1" dir="rtl">
@@ -164,7 +159,7 @@ export default function ServicesSection() {
                 className="rounded-lg mb-4 border border-[var(--color-blue)]"
               ></iframe>
               <div className="font-bold text-xl text-center text-white" style={{color: '#fff'}}>
-                حلول سحابية للأعمال
+                {t('services.section.videos.4.title')}
               </div>
             </div>
             <div className="col-span-1"></div>

@@ -1,9 +1,10 @@
-'use client';
+"use client";
 
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { useRef } from 'react';
 import { Star, ChevronLeft, ChevronRight } from "lucide-react";
 import { useState } from 'react';
+import { useLanguage } from '@/lib/LanguageProvider';
 
 const testimonials = [
   {
@@ -39,6 +40,7 @@ const testimonials = [
 ];
 
 export default function TestimonialsSection() {
+  const { t } = useLanguage();
   // Helper to compute initerdftgyhuuuuuuuuuuuuuuuuuuials from a full name
   const getInitials = (name: string) => {
     if (!name) return '';
@@ -86,30 +88,28 @@ export default function TestimonialsSection() {
           transition={{ duration: 0.7 }}
           className="text-3xl md:text-4xl font-bold text-center mb-10 text-white"
         >
-          قصص نجاح عملائنا
+          {t('testimonials.title')}
         </motion.h2>
-        <p className="text-center text-gray-400 mb-12 max-w-2xl mx-auto">
-          تعرف على آراء شركائنا حول رحلة التحول الرقمي مع CSS
-        </p>
+        <p className="text-center text-gray-400 mb-12 max-w-2xl mx-auto">{t('testimonials.subtitle')}</p>
         <div className="relative max-w-4xl mx-auto">
           {/* Navigation Buttons - Hidden on mobile, visible on larger screens */}
           <div className="hidden md:block">
             <button
               onClick={prevTestimonial}
               className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-12 lg:-translate-x-24 p-3 rounded-full bg-white/5 hover:bg-white/10 border border-white/10 transition-colors z-10"
-              aria-label="Previous testimonial"
-              title="Previous testimonial"
+              aria-label={t('navigation.previous_testimonial')}
+              title={t('navigation.previous_testimonial')}
             >
-              <span className="sr-only">Previous testimonial</span>
+              <span className="sr-only">{t('navigation.previous_testimonial')}</span>
               <ChevronLeft className="w-6 h-6 text-gray-400" />
             </button>
             <button
               onClick={nextTestimonial}
               className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-12 lg:translate-x-24 p-3 rounded-full bg-white/5 hover:bg-white/10 border border-white/10 transition-colors z-10"
-              aria-label="Next testimonial"
-              title="Next testimonial"
+              aria-label={t('navigation.next_testimonial')}
+              title={t('navigation.next_testimonial')}
             >
-              <span className="sr-only">Next testimonial</span>
+              <span className="sr-only">{t('navigation.next_testimonial')}</span>
               <ChevronRight className="w-6 h-6 text-gray-400" />
             </button>
           </div>

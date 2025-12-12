@@ -1,0 +1,306 @@
+{
+  "nav": {
+    "about": "About",
+    "services": "Services",
+    "solutions": "Solutions",
+    "technology": "Technologies",
+    "contact": "Contact"
+  },
+  "language": {
+    "change": "Change Language",
+    "AR": "AR",
+    "ENG": "ENG",
+    "english": "English",
+    "arabic": "Arabic"
+  },
+  "header": {
+    "home": "Home",
+    "products": "Products",
+    "pricing": "Pricing",
+    "faq": "FAQ",
+    "contact_company": "Contact Company",
+    "auth_button": "Sign In / Register"
+  },
+  "hero": {
+    "title": "Welcome to the future of your business with <span>CSS</span>",
+    "subtitle": "Start your digital journey with CSS smart business systems: ERP, HR, and e-invoicing. Integrated solutions that support your growth.",
+    "cta_start": "Start Your Success Now",
+    "cta_learn": "Learn More"
+  },
+  "partners": {
+    "title": "Our Partners",
+    "subtitle": "We are proud to collaborate with industry leaders and trusted organizations.",
+    "partner1": "Partner One",
+    "partner1_desc": "A leading provider of innovative business solutions.",
+    "partner2": "Partner Two",
+    "partner2_desc": "Trusted for quality and reliability in the tech sector.",
+    "partner3": "Partner Three",
+    "partner3_desc": "Delivering excellence in digital transformation."
+  },
+  "about": {
+    "title": "About CSS",
+    "p1": "We are a team of passionate innovators dedicated to transforming businesses through advanced tech solutions. Our commitment to excellence and continuous innovation drives exceptional results.",
+    "vision_title": "Our Vision",
+    "vision_p1": "At CSS, we aspire to lead digital innovation, creating solutions that not only solve today's challenges but anticipate tomorrow's needs.",
+    "vision_p2": "Our approach blends technical excellence with creative problem solving to ensure every solution we deliver makes a real impact on our clients' success.",
+    "timeline_title": "Our Journey",
+    "timeline_subtitle": "Milestones that define our growth",
+    "timeline": [
+      {
+        "year": "Company Founded",
+        "desc": "Started with a vision to transform digital solutions"
+      },
+      {
+        "year": "5",
+        "desc": "Team Members"
+      },
+      {
+        "year": "2024",
+        "desc": "First Enterprise Client"
+      },
+      {
+        "year": "Launched our first major enterprise solution"
+      },
+      {
+        "year": "15",
+        "desc": "Projects Delivered"
+      },
+      {
+        "year": "Global Expansion",
+        "desc": "Opened offices in three new countries"
+      },
+      {
+        "year": "7",
+        "desc": "Team Members"
+      },
+      {
+        "year": "Tech Innovation",
+        "desc": "Launched our own cloud platform"
+      },
+      {
+        "year": "53",
+        "desc": "Clients Worldwide"
+      }
+    ]
+  },
+  "services": {
+    "title": "Our Services",
+    "intro": "Comprehensive technical solutions designed to transform your business. From idea to execution, we deliver excellence at every step.",
+    "contact_cta_title": "Ready to transform your business?",
+    "contact_cta_p": "Let's discuss how our services can help you reach your goals.",
+    "contact_cta_button": "Book a Consultation",
+    "projects_title": "Some of Our Projects",
+    "projects_desc": "Discover how we've helped companies achieve their goals with innovative tech solutions.",
+    "product_focus_name": "Focus ERP",
+    "product_focus_description": "Powerful, fully-integrated ERP covering sales, inventory, manufacturing, accounting and HR.",
+    "product_erplite_name": "ERPLite",
+    "product_erplite_description": "Lightweight ERP for SMEs focused on quick deployment and essential modules.",
+    "prev_image": "Previous image",
+    "next_image": "Next image",
+    "image_label": "Image",
+    "items": {
+      "focus-erp": {
+        "title": "Focus ERP — Integrated Management System",
+        "description": "Focus ERP is a comprehensive enterprise resource planning system designed to manage sales, purchasing, accounting, inventory, production, and HR in one unified platform. It supports multi-branch operations, multi-currency, and advanced reporting to improve operational efficiency and decision making.",
+        "features": "Complete sales & procurement cycle||Integrated accounting & cost control||Inventory & manufacturing management||HR & payroll automation||Attendance integration||Flexible payroll and rewards||Comprehensive employee reports||Legal & tax compliance",
+        "ctaLabel": "Download Focus ERP Guide"
+      },
+      "hr-system": {
+        "title": "HR Management System",
+        "description": "A full-featured HR system to manage employees, attendance, payroll, leaves, and policies. Supports biometric integration, flexible workflows, and detailed reporting to streamline HR operations.",
+        "features": "Define earnings and deductions||Flexible work schedules and tax rules||Incentives and payroll rules||Biometric attendance integration||Department and branch management||Permissions and multi-currency support",
+        "ctaLabel": "Download HR System Guide"
+      },
+      "erplite": {
+        "title": "ERPLite — Lightweight ERP for SMEs",
+        "description": "ERPLite provides essential ERP features for small and medium businesses with fast deployment and easy-to-use interfaces. It covers invoicing, inventory, purchases, accounting, and reporting with lower cost and quick setup.",
+        "features": "Multiple invoice types and payment methods||Credit limits and pricing rules||Smart alerts for stock and pricing||Linking payments to invoices||Unlimited warehouses support||Automatic posting for transactions||Customizable reports||Barcode and POS integration",
+        "ctaLabel": "Download ERPLite Guide"
+      },
+      "e-invoicing": {
+        "title": "E-Invoicing & Tax Reporting",
+        "description": "A compliant e-invoicing solution for registering and managing invoices according to tax authority standards. Supports digital signatures, submission to tax portals, Excel import/export, and flexible integrations.",
+        "features": "Register electronic invoices of all types||Full compliance with tax standards||Support for digital signatures||API integration and data import/export||User-friendly review and submission||Training and support services",
+        "ctaLabel": "Activate E-Invoicing"
+      }
+    },
+    "projects": [
+      { "title": "Urgent Agents Dashboard Platform", "category": "System Administration" },
+      { "title": "Life Line Hospital Management System", "category": "Cloud Migration Project" },
+      { "title": "CSS Website", "category": "Web Development" }
+    ],
+    "section": {
+      "title": "Services",
+      "p": "At CSS we deliver integrated technical solutions that support your growth and keep you up to date with digital advances.",
+      "items": [
+        {
+          "title": "Integrated ERP System",
+          "description": "A unified platform managing sales, inventory, accounting and finance with accurate reporting and ready integrations to reduce errors and speed operations.",
+          "tech": "ERP Lite||Advanced Edition||Financial Reports"
+        },
+        {
+          "title": "HR Management System",
+          "description": "Comprehensive employee management: attendance, payroll, leaves, and performance records with exportable reports.",
+          "tech": "Employee Records||Attendance & Time||Payroll Calculations"
+        },
+        {
+          "title": "E-Invoicing (Tax Authority Compatible)",
+          "description": "Issue and manage electronic invoices compatible with tax authority standards, with digital signing and secure archiving.",
+          "tech": "Tax Integration||Digital Signature||Archiving & Reports"
+        },
+        {
+          "title": "Fast & Flexible POS",
+          "description": "A fast cashier interface managing sales and payments with real-time inventory sync, suitable for retail businesses.",
+          "tech": "POS||Inventory Sync||Real-time Sales Reports"
+        },
+        {
+          "title": "Custom Software Development",
+          "description": "Build custom web, mobile or desktop apps tailored to your processes with staged delivery, client acceptance testing, and QA.",
+          "tech": "Web Apps||Mobile Apps||Desktop Solutions"
+        },
+        {
+          "title": "Managed Cloud Solutions",
+          "description": "Migrate and run your apps on reliable clouds with scalable architecture, backups and disaster recovery strategies.",
+          "tech": "Cloud Hosting||System Integration||Backup & Restore"
+        },
+        {
+          "title": "Cybersecurity & Risk Management",
+          "description": "Integrated protection: regular vulnerability scans, penetration tests, and data encryption to ensure continuity and compliance.",
+          "tech": "Security Audit||Penetration Testing||Encryption & Compliance"
+        }
+      ],
+      "videos_title": "Channel Videos",
+      "videos": [
+        { "title": "E-Invoicing Integration" },
+        { "title": "Benefits of Smart POS" },
+        { "title": "Overview of CSS ERP" },
+        { "title": "Cybersecurity & Risk Management" },
+        { "title": "Cloud Solutions for Business" }
+      ]
+    }
+  },
+  "cta": {
+    "join_title": "Join CSS Clients",
+    "join_p": "Start your digital journey with our smart solutions and grow your business confidently.",
+    "contact_now": "Contact Now"
+  },
+  "stats": {
+    "customer_satisfaction": "Customer Satisfaction",
+    "successful_projects": "Successful Projects",
+    "years_experience": "Years Experience",
+    "support": "24/7 Support"
+  },
+  "navigation": {
+    "previous_testimonial": "Previous testimonial",
+    "next_testimonial": "Next testimonial"
+  },
+  "contact": {
+    "title": "Get in Touch",
+    "subtitle": "Have a project in mind? Let's talk about how we can help.",
+    "label_name": "Name",
+    "placeholder_name": "Your name",
+    "label_email": "Email",
+    "placeholder_email": "your@email.com",
+    "label_message": "Message",
+    "placeholder_message": "Tell us about your project...",
+    "send_message": "Send Message"
+  },
+  "footer": {
+    "description": "Transforming businesses with innovative tech solutions. Your trusted partner in digital transformation.",
+    "quick_links_title": "Quick Links",
+    "services_title": "Services",
+    "contact_title": "Contact Us",
+    "address": "Helmiet El-Zaitoun, Cairo, Egypt",
+    "copy_right": "© {year} CSS. All rights reserved.",
+    "back_to_top": "Back to top",
+    "social": {
+      "facebook": "Facebook",
+      "twitter": "Twitter",
+      "linkedin": "LinkedIn",
+      "instagram": "Instagram"
+    }
+  },
+  "process": {
+    "title": "Our Process",
+    "intro": "A rigorous methodology to ensure best results for your business.",
+    "steps": [
+      { "title": "Requirements Analysis", "description": "We start with a deep understanding of your needs and goals to ensure solutions match your requirements." },
+      { "title": "Strategy & Planning", "description": "We craft a comprehensive technical plan tailored to your needs and objectives." },
+      { "title": "Development", "description": "We implement solutions using modern technologies with high quality and precision." },
+      { "title": "Testing & QA", "description": "We conduct thorough tests to ensure solutions perform reliably in real-world environments." },
+      { "title": "Deployment & Training", "description": "We deploy with minimal disruption and provide full training for your team." },
+      { "title": "Support", "description": "Ongoing maintenance and support to keep systems running at peak performance." }
+    ]
+  },
+  "technology": {
+    "section": {
+      "title": "Technologies",
+      "p": "We use modern technologies to build scalable, secure, and innovative solutions for our clients.",
+      "items": [
+        { "category": "Backend Development", "description": "Robust and scalable backend solutions", "techs": "Node.js||Python||Java||Go||PostgreSQL||MongoDB" },
+        { "category": "Frontend Development", "description": "Modern and responsive user interfaces", "techs": "React||Next.js||TypeScript||Tailwind CSS||Vue.js" },
+        { "category": "Cloud & DevOps", "description": "Scalable cloud infrastructure", "techs": "AWS||Azure||Docker||Kubernetes||CI/CD" },
+        { "category": "AI & Machine Learning", "description": "Cutting-edge AI solutions", "techs": "TensorFlow||PyTorch||OpenAI||Computer Vision||NLP" },
+        { "category": "Cybersecurity", "description": "Enterprise-grade security", "techs": "Encryption||Penetration Testing||Security Audits||WAF" },
+        { "category": "IoT & Edge Computing", "description": "Connected device solutions", "techs": "IoT Platforms||Edge Computing||Sensors||Real-time Analytics" }
+      ],
+      "stats": ["Mastered Technologies","Delivered Projects","24/7 Support"]
+    }
+  },
+  "why": {
+    "title": "Why Choose CSS?",
+    "subtitle": "We combine modern tech with experience to deliver integrated solutions that power your success.",
+    "features": [
+      { "title": "Advanced Infrastructure", "description": "Scalable, secure solutions that meet modern enterprise needs." },
+      { "title": "High Security", "description": "Advanced security protocols and real-time monitoring to protect your data." },
+      { "title": "Performance", "description": "Fast performance and immediate rollouts for critical systems and apps." },
+      { "title": "24/7 Support", "description": "Specialized support team available to help you around the clock." },
+      { "title": "Custom Development", "description": "Tailored software and solutions to fit your unique business needs." },
+      { "title": "Customer Satisfaction", "description": "High satisfaction rates and long-term partnerships with our clients." }
+    ]
+  },
+  "testimonials": {
+    "title": "Customer Success Stories",
+    "subtitle": "Read what our partners say about their digital transformation journey with CSS"
+  },
+  "solutions": {
+    "erp": "ERP Solutions",
+    "sys_admin": "System Administration",
+    "web_dev": "Web Development",
+    "cloud": "Cloud Solutions",
+    "security": "Security Services",
+    "section": {
+      "title": "Enterprise Solutions",
+      "p": "Transform your business with advanced, future-ready technical solutions.",
+      "items": [
+        {
+          "title": "Custom Software Development",
+          "description": "Solutions tailored to your unique business needs.",
+          "highlights": "Modern technologies||Scalable architecture||Clean code standards",
+          "benefits": "Faster development cycles by 30%"
+        },
+        {
+          "title": "Cloud Solutions",
+          "description": "Leverage cloud computing for scalability and reliability.",
+          "highlights": "AWS & Azure expertise||Cloud migration||Serverless architecture",
+          "benefits": "99.9% uptime assurance"
+        },
+        {
+          "title": "Cybersecurity",
+          "description": "Protect your digital assets with enterprise-grade security solutions.",
+          "highlights": "Threat detection||Data encryption||Security audits",
+          "benefits": "Zero breaches reported"
+        },
+        {
+          "title": "AI & Machine Learning",
+          "description": "Turn data into actionable insights with advanced AI solutions.",
+          "highlights": "Predictive analytics||NLP||Computer vision",
+          "benefits": "Improve efficiency by 40%"
+        }
+      ],
+      "cta_title": "Ready to transform your business?",
+      "cta_p": "Let's discuss how our solutions can help you achieve your goals.",
+      "cta_button": "Book a Consultation"
+    }
+  }
+}

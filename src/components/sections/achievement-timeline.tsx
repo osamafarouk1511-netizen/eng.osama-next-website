@@ -1,37 +1,19 @@
+
 'use client';
 
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { useRef, useEffect, useState } from 'react';
 import { Trophy, Star, Code, Globe } from 'lucide-react';
+import { useLanguage } from '@/lib/LanguageProvider';
+import en from '@/locales/en.json';
+import ar from '@/locales/ar.json';
 
-const achievements = [
-  {
-    title: "تأسيس الشركة",
-    description: "بدأت برؤية لتحويل الحلول الرقمية",
-    icon: Trophy,
-    metric: { value: 5, label: "أعضاء الفريق" }
-  },
-  {
-    year: 2024,
-    title: "أول عميل مؤسسي",
-    description: "أطلقنا أول حل مؤسسي رئيسي",
-    icon: Star,
-    metric: { value: 15, label: "المشاريع المُسلمة" }
-  },
-  {
-    title: "التوسع العالمي",
-    description: "افتتحنا مكاتب في ثلاث دول جديدة",
-    icon: Globe,
-    metric: { value: 7, label: "أعضاء الفريق" }
-  },
-  {
-    title: "ابتكار تكنولوجي",
-    description: "أطلقنا منصتنا السحابية الخاصة",
-    icon: Code,
-    metric: { value: 53, label: "عملاء حول العالم" }
-  },
-
-];
+const iconMap: Record<string, any> = {
+  trophy: Trophy,
+  star: Star,
+  code: Code,
+  globe: Globe,
+};
 
 type CounterProps = {
   end: number;
@@ -97,12 +79,17 @@ const Counter = ({ end, duration = 2000 }: CounterProps) => {
 
 export default function AchievementTimeline() {
   const containerRef = useRef<HTMLDivElement>(null);
+  const { t, lang } = useLanguage();
   const { scrollYProgress } = useScroll({
     target: containerRef,
     offset: ["start end", "end start"]
   });
 
   const lineHeight = useTransform(scrollYProgress, [0, 1], ["0%", "100%"]);
+
+  // Get timeline data from locale object directly
+  let timeline = lang === 'AR' ? ar.about?.timeline : en.about?.timeline;
+  if (!Array.isArray(timeline)) timeline = [];
 
   return (
     <section className="py-24 bg-black relative overflow-hidden" ref={containerRef}>
@@ -117,9 +104,9 @@ export default function AchievementTimeline() {
           transition={{ duration: 0.8 }}
           className="text-center mb-16"
         >
-          <h2 className="text-4xl font-bold mb-4">رحلتنا</h2>
+          <h2 className="text-4xl font-bold mb-4">{t('about.timeline_title')}</h2>
           <p className="text-xl text-gray-400 max-w-2xl mx-auto">
-            المحطات التي تحدد نمونا
+            {t('about.timeline_subtitle')}
           </p>
         </motion.div>
 
@@ -132,11 +119,13 @@ export default function AchievementTimeline() {
           />
 
           <div className="space-y-24">
-            {achievements.map((achievement, index) => {
+            {timeline.map((achievement, index) => {
               const isEven = index % 2 === 0;
+              // Optionally map icon if present, fallback to Trophy
+              const Icon = iconMap[achievement.icon?.toLowerCase?.()] || Trophy;
               return (
                 <motion.div
-                  key={`${achievement.year}-${index}`}
+                  key={`${achievement.year || achievement.title || index}`}
                   initial={{ opacity: 0, x: isEven ? -50 : 50 }}
                   whileInView={{ opacity: 1, x: 0 }}
                   viewport={{ once: true }}
@@ -148,16 +137,18 @@ export default function AchievementTimeline() {
                     <div className="bg-white/5 sm:backdrop-blur-sm p-6 rounded-2xl border border-white/10 
                                   hover:bg-white/10 transition-colors">
                       <span className="text-primary font-bold text-xl mb-2 block">
-                        {achievement.year}
+                        {achievement.year || ''}
                       </span>
                       <h3 className="text-xl font-semibold mb-2">{achievement.title}</h3>
-                      <p className="text-gray-400 mb-4">{achievement.description}</p>
-                      <div className="flex items-center gap-2 text-2xl font-bold text-primary">
-                        <Counter end={achievement.metric.value} />
-                        <span className="text-sm text-gray-400 font-normal">
-                          {achievement.metric.label}
-                        </span>
-                      </div>
+                      <p className="text-gray-400 mb-4">{achievement.desc || achievement.description}</p>
+                      {achievement.metric && achievement.metric.value && (
+                        <div className="flex items-center gap-2 text-2xl font-bold text-primary">
+                          <Counter end={achievement.metric.value} />
+                          <span className="text-sm text-gray-400 font-normal">
+                            {achievement.metric.label}
+                          </span>
+                        </div>
+                      )}
                     </div>
                   </div>
 
@@ -168,7 +159,7 @@ export default function AchievementTimeline() {
                       whileHover={{ scale: 1.1 }}
                       transition={{ type: "spring", stiffness: 300 }}
                     >
-                      <achievement.icon className="w-6 h-6 text-primary" />
+                      <Icon className="w-6 h-6 text-primary" />
                     </motion.div>
                   </div>
 

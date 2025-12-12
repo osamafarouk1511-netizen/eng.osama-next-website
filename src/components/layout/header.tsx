@@ -1,4 +1,4 @@
-'use client'
+"use client"
 
 import { motion } from 'framer-motion'
 import { Menu, X } from 'lucide-react'
@@ -6,16 +6,18 @@ import Link from 'next/link'
 import Image from 'next/image'
 import { useState } from 'react'
 import { Button } from '../ui/button'
+import { useLanguage } from '@/lib/LanguageProvider'
 
 const Header = () => {
   const [isOpen, setIsOpen] = useState(false)
+  const { t } = useLanguage()
 
   const menuItems = [
-    { name: 'الرئيسية', href: '/' },
-    { name: 'المنتجات', href: '#products' },
-    { name: 'الأسعار', href: '#pricing' },
-    { name: 'الأسئلة الشائعة', href: '#faq' },
-    { name: 'شركة الاتصال', href: '#contact' },
+    { key: 'header.home', href: '/' },
+    { key: 'header.products', href: '#products' },
+    { key: 'header.pricing', href: '#pricing' },
+    { key: 'header.faq', href: '#faq' },
+    { key: 'header.contact_company', href: '#contact' },
   ];
 
   const menuVariants = {
@@ -41,14 +43,14 @@ const Header = () => {
           <div className="hidden md:flex items-center gap-8">
             {menuItems.map((item) => (
               <Link
-                key={item.name}
+                key={item.key}
                 href={item.href}
                 className="text-gray-600 hover:text-primary transition-colors"
               >
-                {item.name}
+                {t(item.key)}
               </Link>
             ))}
-            <Button title="تسجيل الدخول / إنشاء حساب" aria-label="تسجيل الدخول / إنشاء حساب">تسجيل الدخول / إنشاء حساب</Button>
+            <Button title={t('header.auth_button')} aria-label={t('header.auth_button')}>{t('header.auth_button')}</Button>
           </div>
 
           {/* Mobile Menu Button */}
@@ -72,15 +74,15 @@ const Header = () => {
           <div className="flex flex-col items-center gap-4 pt-16">
             {menuItems.map((item) => (
               <Link
-                key={item.name}
+                key={item.key}
                 href={item.href}
                 className="text-xl text-gray-600 hover:text-primary transition-colors"
                 onClick={() => setIsOpen(false)}
               >
-                {item.name}
+                {t(item.key)}
               </Link>
             ))}
-            <Button onClick={() => setIsOpen(false)} title="تسجيل الدخول / إنشاء حساب" aria-label="تسجيل الدخول / إنشاء حساب">تسجيل الدخول / إنشاء حساب</Button>
+            <Button onClick={() => setIsOpen(false)} title={t('header.auth_button')} aria-label={t('header.auth_button')}>{t('header.auth_button')}</Button>
           </div>
         </motion.div>
       </nav>

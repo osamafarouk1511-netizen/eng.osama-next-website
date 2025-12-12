@@ -4,6 +4,7 @@ import { motion } from 'framer-motion';
 import dynamic from 'next/dynamic';
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
+import { useLanguage } from '@/lib/LanguageProvider';
 import { MobileHeroImage } from '@/components/3d/MobileHeroImage';
 import { useMediaQuery } from '@/lib/hooks/use-media-query';
 
@@ -19,6 +20,7 @@ const Scene = dynamic(() => import('@/components/3d/TechScene'), {
 
 export default function HeroSection() {
   const isDesktop = useMediaQuery('(min-width: 768px)');
+  const { t } = useLanguage();
 
   return (
     <section className="relative min-h-[100svh] flex items-center justify-center bg-black pt-16 pb-8 md:py-0">
@@ -30,21 +32,17 @@ export default function HeroSection() {
             transition={{ duration: 0.5 }}
             className="text-center md:text-right space-y-4 md:space-y-6"
           >
-            <h1 className="text-4xl md:text-6xl font-bold leading-[1.2] tracking-tight bg-clip-text text-transparent bg-gradient-to-r from-white to-gray-400">
-              مرحباً بك في مستقبل أعمالك مع <span className="text-primary">CSS</span>
-            </h1>
-            <p className="text-lg md:text-xl text-gray-300 max-w-2xl mx-auto md:mx-0 leading-relaxed">
-              ابدأ رحلتك الرقمية مع أنظمة CSS الذكية لإدارة الأعمال: ERP، الموارد البشرية، والفاتورة الإلكترونية. حلول متكاملة تدعم نمو أعمالك بثقة وسهولة.
-            </p>
+            <h1 className="text-4xl md:text-6xl font-bold leading-[1.2] tracking-tight bg-clip-text text-transparent bg-gradient-to-r from-white to-gray-400" dangerouslySetInnerHTML={{ __html: t('hero.title').replace('<span>', '<span className="text-primary">') }} />
+            <p className="text-lg md:text-xl text-gray-300 max-w-2xl mx-auto md:mx-0 leading-relaxed">{t('hero.subtitle')}</p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center md:justify-end">
               <Link href="/contact">
                 <Button 
                   size="lg" 
                   className="w-full sm:w-auto text-[1rem] py-6 sm:py-4 font-medium tracking-wide" 
-                  title="ابدأ الآن" 
-                  aria-label="ابدأ الآن"
+                  title={t('hero.cta_start')} 
+                  aria-label={t('hero.cta_start')}
                 >
-                  ابدأ نجاحك الآن
+                  {t('hero.cta_start')}
                 </Button>
               </Link>
               <Link href="/services">
@@ -52,10 +50,10 @@ export default function HeroSection() {
                   size="lg" 
                   variant="outline" 
                   className="w-full sm:w-auto text-[1rem] py-6 sm:py-4 font-medium tracking-wide border-white/10 hover:bg-white/5" 
-                  title="اعرف المزيد" 
-                  aria-label="اعرف المزيد"
+                  title={t('hero.cta_learn')} 
+                  aria-label={t('hero.cta_learn')}
                 >
-                  اعرف المزيد
+                  {t('hero.cta_learn')}
                 </Button>
               </Link>
             </div>

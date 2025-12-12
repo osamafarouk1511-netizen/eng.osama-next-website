@@ -1,48 +1,20 @@
-'use client';
+"use client";
 
 import { motion } from 'framer-motion';
 import { SearchCode, GitBranch, Code2, TestTube2, Rocket, HeadphonesIcon } from 'lucide-react';
+import { useLanguage } from '@/lib/LanguageProvider';
 
 const processSteps = [
-  {
-    number: "01",
-    title: "تحليل الاحتياجات",
-    description: "نبدأ بفهم عميق لاحتياجات وأهداف عملك لضمان توافق الحلول مع متطلباتك.",
-    icon: SearchCode
-  },
-  {
-    number: "02",
-    title: "وضع الاستراتيجية",
-    description: "نضع خطة تقنية متكاملة تناسب متطلباتك وتحقق أهدافك.",
-    icon: GitBranch
-  },
-  {
-    number: "03",
-    title: "التطوير",
-    description: "ننفذ الحلول باستخدام أحدث التقنيات وبأعلى درجات الدقة والاحترافية.",
-    icon: Code2
-  },
-  {
-    number: "04",
-    title: "الاختبار والجودة",
-    description: "نقوم باختبارات دقيقة لضمان أداء الحلول بكفاءة في بيئة العمل الحقيقية.",
-    icon: TestTube2
-  },
-  {
-    number: "05",
-    title: "التنفيذ والتدريب",
-    description: "ننفذ الحلول بسلاسة دون توقف الأعمال، مع تدريب كامل للفريق.",
-    icon: Rocket
-  },
-  {
-    number: "06",
-    title: "الدعم الفني",
-    description: "دعم وصيانة مستمرة لضمان استمرار الحلول بأفضل أداء.",
-    icon: HeadphonesIcon
-  }
+  { number: '01', key: 'process.steps.0', icon: SearchCode },
+  { number: '02', key: 'process.steps.1', icon: GitBranch },
+  { number: '03', key: 'process.steps.2', icon: Code2 },
+  { number: '04', key: 'process.steps.3', icon: TestTube2 },
+  { number: '05', key: 'process.steps.4', icon: Rocket },
+  { number: '06', key: 'process.steps.5', icon: HeadphonesIcon },
 ];
 
 export default function ProcessSection() {
+  const { t } = useLanguage();
 
   return (
     <section className="py-24 bg-black relative overflow-hidden">
@@ -57,10 +29,8 @@ export default function ProcessSection() {
           transition={{ duration: 0.8 }}
           className="text-center mb-16"
         >
-          <h2 className="text-4xl md:text-6xl font-bold mb-6 bg-clip-text text-transparent bg-gradient-to-r from-white to-gray-400">خطوات العمل</h2>
-          <p className="text-lg md:text-xl text-gray-300 max-w-2xl mx-auto">
-            منهجية دقيقة لضمان أفضل النتائج لعملك
-          </p>
+          <h2 className="text-4xl md:text-6xl font-bold mb-6 bg-clip-text text-transparent bg-gradient-to-r from-white to-gray-400">{t('process.title')}</h2>
+          <p className="text-lg md:text-xl text-gray-300 max-w-2xl mx-auto">{t('process.intro')}</p>
         </motion.div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -82,8 +52,8 @@ export default function ProcessSection() {
                     <step.icon className="w-8 h-8 text-white transition-colors" />
                   </div>
                 </div>
-                <h3 className="text-2xl font-semibold mb-3 bg-gradient-to-r from-white to-gray-400 bg-clip-text text-transparent">{step.title}</h3>
-                <p className="text-gray-300 leading-relaxed">{step.description}</p>
+                <h3 className="text-2xl font-semibold mb-3 bg-gradient-to-r from-white to-gray-400 bg-clip-text text-transparent">{t(`${step.key}.title`)}</h3>
+                <p className="text-gray-300 leading-relaxed">{t(`${step.key}.description`)}</p>
               </div>
             </motion.div>
           ))}
