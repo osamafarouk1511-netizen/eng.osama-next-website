@@ -184,8 +184,8 @@ export default function AnimatedContactSection() {
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
                 className="bg-primary text-white px-8 py-4 rounded-lg font-medium flex items-center space-x-2 group relative overflow-hidden"
-                aria-label="Send message"
-                title="Send message"
+                aria-label={t('contact.send_message')}
+                title={t('contact.send_message')}
               >
                 <span className="relative z-10">{t('contact.send_message')}</span>
                 <motion.div
